@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rudder Commerce — Agentes de IA en WhatsApp para e-commerce</title>
+<meta name="description" content="Instalamos agentes de IA en WhatsApp para marcas de e-commerce en Colombia: responden en segundos, cierran ventas y confirman pedidos contraentrega.">
+<meta property="og:title" content="Rudder Commerce — Agentes de IA en WhatsApp para e-commerce">
+<meta property="og:description" content="Instalamos agentes de IA en WhatsApp para marcas de e-commerce en Colombia: responden en segundos, cierran ventas y confirman pedidos contraentrega.">
+<meta property="og:type" content="website">
+<link rel="icon" href="/assets/fav.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#0a0a0a}
+a{color:#0052d4}a:hover{color:#003c9e}
+::selection{background:#0052d4;color:#ffffff}
+.btn{transition:background .25s ease,color .25s ease,border-color .25s ease}
+.btn-blue:hover{background:#ffffff !important;color:#0a0a0a !important}
+.btn-line:hover{background:#ffffff !important;color:#0a0a0a !important}
+.btn-dark:hover{background:#0052d4 !important;color:#ffffff !important}
+.btn-white:hover{background:#0a0a0a !important;color:#ffffff !important}
+.nav-a{color:#ffffff;text-decoration:none;opacity:.78;transition:opacity .2s}
+.nav-a:hover{opacity:1;color:#ffffff}
+.row-cap{transition:padding-left .35s cubic-bezier(.2,.7,.2,1)}
+.row-cap:hover{padding-left:20px !important}
+.row-cap:hover .row-idx{color:#0052d4 !important}
+@keyframes rise{from{opacity:0;transform:translateY(48px)}to{opacity:1;transform:none}}
+@keyframes msg{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+@keyframes lineup{from{transform:translateY(105%)}to{transform:none}}
+@keyframes curtain{0%{transform:none}100%{transform:translateY(-101%)}}
+@keyframes wordout{0%{opacity:0;letter-spacing:.6em}40%{opacity:1;letter-spacing:.2em}100%{opacity:1}}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-1.5deg)}50%{transform:translateY(-16px) rotate(1.5deg)}}
+.curtain{animation:curtain .9s cubic-bezier(.76,0,.24,1) 1.05s both}
+.curtain-word{animation:wordout 1s ease both}
+.ln{animation:lineup 1s cubic-bezier(.2,.8,.2,1) both}
+.ln1{animation-delay:1.55s}.ln2{animation-delay:1.68s}.ln3{animation-delay:1.81s}
+.ruddy{animation:float 5s ease-in-out infinite}
+.stack{position:sticky}
+.reveal{animation:rise linear both;animation-timeline:view();animation-range:entry 0% cover 28%}
+.m1{animation:msg .6s cubic-bezier(.2,.7,.2,1) .6s both}
+.m2{animation:msg .6s cubic-bezier(.2,.7,.2,1) 1.7s both}
+.m3{animation:msg .6s cubic-bezier(.2,.7,.2,1) 2.8s both}
+.m4{animation:msg .6s cubic-bezier(.2,.7,.2,1) 3.7s both}
+.m5{animation:msg .6s cubic-bezier(.2,.7,.2,1) 4.6s both}
+.live{animation:blink 1.6s ease-in-out infinite}
+.track{animation:marquee 38s linear infinite}
+input[type=range]{accent-color:#0052d4;width:100%;height:28px;cursor:pointer}
+details summary{cursor:pointer;list-style:none}
+details summary::-webkit-details-marker{display:none}
+details[open] .faq-x{transform:rotate(45deg)}
+.faq-x{transition:transform .3s ease}
+@media (prefers-reduced-motion: reduce){.reveal,.m1,.m2,.m3,.m4,.m5,.track,.live,.ln,.ruddy,.curtain-word{animation:none !important}.curtain{display:none}}
+@supports not (animation-timeline: view()){.reveal{animation:none}}
+</style>
+</head>
+<body>
+<div style="font-family: Inter, -apple-system, 'Segoe UI', Roboto, sans-serif; color: #0a0a0a; background: #ffffff; -webkit-font-smoothing: antialiased">
+<!-- ================= HERO (3D) ================= -->
+<section id="inicio" style="position: relative; background: #0a0a0a; color: #ffffff; min-height: 820px; overflow: hidden; display: flex; flex-direction: column">
+<canvas id="scene" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; display: block"></canvas>
+<div class="curtain" aria-hidden="true" style="position: absolute; inset: 0; z-index: 5; background: #0052d4; display: flex; align-items: center; justify-content: center; pointer-events: none">
+<span class="curtain-word" style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: clamp(28px, 4vw, 56px); letter-spacing: 0.2em; color: #ffffff">RUDDER</span>
+</div>
+<header style="position: relative; z-index: 2">
+<nav aria-label="Principal" style="max-width: 1320px; margin: 0 auto; padding: 22px 32px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap">
+<a href="#inicio" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: #ffffff">
+<img src="/assets/lw.webp" alt="" width="34" height="34" style="display: block; width: 34px; height: 34px">
+<span style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 15px; letter-spacing: 0.16em">RUDDER COMMERCE</span>
+</a>
+<div style="display: flex; align-items: center; gap: 30px; flex-wrap: wrap; font-size: 14px; font-weight: 500">
+<a class="nav-a" href="#timonel">Timonel</a>
+<a class="nav-a" href="#calculadora">Calculadora</a>
+<a class="nav-a" href="#piloto">Piloto</a>
+<a class="nav-a" href="#preguntas">Preguntas</a>
+<a class="btn btn-line" href="https://cal.com/rudder-commerce-izsvx2/diagnostico" style="color: #ffffff; text-decoration: none; padding: 11px 18px; border: 1px solid #ffffff; font-weight: 600; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center">Agendar diagnóstico</a>
+</div>
+</nav>
+</header>
+<div style="position: relative; z-index: 1; flex: 1; max-width: 1320px; width: 100%; margin: 0 auto; padding: 40px 32px 0; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between; gap: 48px; pointer-events: none">
+<span aria-hidden="true"></span>
+<h1 style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: clamp(48px, 8.6vw, 132px); line-height: 0.95; letter-spacing: -0.045em; max-width: 1100px">
+<span style="display: block; overflow: hidden; padding-bottom: 0.04em"><span class="ln ln1" style="display: block">Tu WhatsApp</span></span>
+<span style="display: block; overflow: hidden; padding-bottom: 0.04em"><span class="ln ln2" style="display: block">vende a las</span></span>
+<span style="display: block; overflow: hidden; padding-bottom: 0.04em"><span class="ln ln3" style="display: block; color: #0052d4">10:40 p. m.</span></span>
+</h1>
+<div style="display: flex; flex-wrap: wrap; gap: 32px; justify-content: space-between; align-items: flex-end; border-top: 1px solid #2a2f38; padding: 28px 0 40px; pointer-events: auto">
+<p style="margin: 0; max-width: 520px; font-size: 19px; line-height: 1.6; color: #c7cdd8; text-wrap: pretty">Aunque tu equipo esté dormido. Instalamos un agente de IA conectado a tu tienda que responde en segundos, cierra la venta y confirma cada pedido contraentrega. Sin contratar más personal.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 12px">
+<a class="btn btn-blue" href="#agendar" style="background: #0052d4; color: #ffffff; text-decoration: none; padding: 18px 28px; font-weight: 600; font-size: 17px; min-height: 56px; box-sizing: border-box; display: inline-flex; align-items: center; gap: 12px">Agenda tu diagnóstico
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= MARQUEE ================= -->
+<div aria-hidden="true" style="background: #0052d4; color: #ffffff; overflow: hidden; white-space: nowrap; border-top: 1px solid #0a0a0a; border-bottom: 1px solid #0a0a0a">
+<div class="track" style="display: inline-flex; gap: 48px; padding: 22px 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 34px; letter-spacing: -0.01em">
+<span>RESPONDE</span><span>✕</span><span>CIERRA</span><span>✕</span><span>CONFIRMA</span><span>✕</span><span>ESCALA</span><span>✕</span><span>RESPONDE</span><span>✕</span><span>CIERRA</span><span>✕</span><span>CONFIRMA</span><span>✕</span><span>ESCALA</span><span>✕</span>
+<span>RESPONDE</span><span>✕</span><span>CIERRA</span><span>✕</span><span>CONFIRMA</span><span>✕</span><span>ESCALA</span><span>✕</span><span>RESPONDE</span><span>✕</span><span>CIERRA</span><span>✕</span><span>CONFIRMA</span><span>✕</span><span>ESCALA</span><span>✕</span>
+</div>
+</div>
+<!-- ================= PROBLEM ================= -->
+<section style="background: #ffffff">
+<div style="max-width: 1320px; margin: 0 auto; padding: 128px 32px; display: flex; flex-direction: column; gap: 72px">
+<div class="reveal" style="display: flex; flex-wrap: wrap; gap: 32px; justify-content: space-between; align-items: flex-end">
+<h2 style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: clamp(36px, 5vw, 72px); line-height: 0.98; letter-spacing: -0.035em; max-width: 860px">Cada mensaje sin responder es una venta para otra marca.</h2>
+</div>
+<div style="display: flex; flex-direction: column; border-top: 2px solid #0a0a0a">
+<div class="reveal" style="display: flex; flex-wrap: wrap; gap: 24px 48px; align-items: baseline; padding: 40px 0; border-bottom: 1px solid #d9dee7">
+<span style="flex: 0 0 auto; min-width: 280px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: clamp(64px, 9vw, 128px); line-height: 0.9; letter-spacing: -0.05em">94%</span>
+<div style="flex: 1 1 360px; display: flex; flex-direction: column; gap: 10px">
+<p style="margin: 0; font-size: 22px; line-height: 1.45; font-weight: 500; text-wrap: pretty">de las personas con internet en Colombia usan WhatsApp. Ahí es donde tu cliente pregunta, decide y compra.</p>
+<p style="margin: 0; font-size: 13px; color: #5b6472">We Are Social y Meltwater, Digital Report 2025</p>
+</div>
+</div>
+<div class="reveal" style="display: flex; flex-wrap: wrap; gap: 24px 48px; align-items: baseline; padding: 40px 0; border-bottom: 1px solid #d9dee7">
+<span style="flex: 0 0 auto; min-width: 280px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: clamp(64px, 9vw, 128px); line-height: 0.9; letter-spacing: -0.05em">1 de 5</span>
+<div style="flex: 1 1 360px; display: flex; flex-direction: column; gap: 10px">
+<p style="margin: 0; font-size: 22px; line-height: 1.45; font-weight: 500; text-wrap: pretty">pedidos contraentrega suele volver sin pagar. Es un flete perdido, inventario quieto y una venta que no fue.</p>
+<p style="margin: 0; font-size: 13px; color: #5b6472">Operadores de contraentrega en Colombia reportan entre 15% y 25% de devoluciones</p>
+</div>
+</div>
+<div class="reveal" style="display: flex; flex-wrap: wrap; gap: 24px 48px; align-items: baseline; padding: 40px 0; border-bottom: 1px solid #d9dee7">
+<span style="flex: 0 0 auto; min-width: 280px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: clamp(64px, 9vw, 128px); line-height: 0.9; letter-spacing: -0.05em; color: #0052d4">+23%</span>
+<div style="flex: 1 1 360px; display: flex; flex-direction: column; gap: 10px">
+<p style="margin: 0; font-size: 22px; line-height: 1.45; font-weight: 500; text-wrap: pretty">subió el salario mínimo en 2026. Un asesor más ya cuesta $2.000.000 al mes antes de prestaciones, y trabaja 42 horas a la semana.</p>
+<p style="margin: 0; font-size: 13px; color: #5b6472">Decreto 1469 de 2025</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= TIMONEL: CHAT + CAPABILITIES ================= -->
+<section id="timonel" style="background: #0a0a0a; color: #ffffff">
+<div style="max-width: 1320px; margin: 0 auto; padding: 128px 32px; display: flex; flex-wrap: wrap; gap: 72px; align-items: flex-start">
+<div style="flex: 1 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 48px">
+<div class="reveal" style="display: flex; flex-direction: column; gap: 22px">
+<p style="margin: 0; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #8a93a3">Sistema Timonel</p>
+<h2 style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: clamp(36px, 4.6vw, 64px); line-height: 1; letter-spacing: -0.035em">Atiende como tu mejor asesor. A cualquier hora.</h2>
+</div>
+<ol style="margin: 0; padding: 0; list-style: none; border-top: 1px solid #2a2f38">
+<li class="row-cap reveal" style="display: flex; gap: 28px; padding: 28px 0; border-bottom: 1px solid #2a2f38">
+<span class="row-idx" style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 15px; color: #8a93a3; min-width: 28px; padding-top: 6px">01</span>
+<div style="display: flex; flex-direction: column; gap: 8px"><h3 style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 26px; letter-spacing: -0.015em">Responde en segundos</h3><p style="margin: 0; font-size: 17px; line-height: 1.6; color: #b8bfcc">Tallas, colores, precios, envíos y existencias, con la información real de tu tienda.</p></div>
+</li>
+<li class="row-cap reveal" style="display: flex; gap: 28px; padding: 28px 0; border-bottom: 1px solid #2a2f38">
+<span class="row-idx" style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 15px; color: #8a93a3; min-width: 28px; padding-top: 6px">02</span>
+<div style="display: flex; flex-direction: column; gap: 8px"><h3 style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 26px; letter-spacing: -0.015em">Cierra la venta</h3><p style="margin: 0; font-size: 17px; line-height: 1.6; color: #b8bfcc">Envía el link de pago o toma el pedido contraentrega sin que el cliente salga del chat.</p></div>
+</li>
+<li class="row-cap reveal" style="display: flex; gap: 28px; padding: 28px 0; border-bottom: 1px solid #2a2f38">
+<span class="row-idx" style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 15px; color: #8a93a3; min-width: 28px; padding-top: 6px">03</span>
+<div style="display: flex; flex-direction: column; gap: 8px"><h3 style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 26px; letter-spacing: -0.015em">Confirma cada pedido</h3><p style="margin: 0; font-size: 17px; line-height: 1.6; color: #b8bfcc">Antes del despacho valida dirección y disponibilidad. Así se devuelven menos pedidos.</p></div>
+</li>
+<li class="row-cap reveal" style="display: flex; gap: 28px; padding: 28px 0; border-bottom: 1px solid #2a2f38">
+<span class="row-idx" style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 15px; color: #8a93a3; min-width: 28px; padding-top: 6px">04</span>
+<div style="display: flex; flex-direction: column; gap: 8px"><h3 style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 26px; letter-spacing: -0.015em">Sabe cuándo pasar a tu equipo</h3><p style="margin: 0; font-size: 17px; line-height: 1.6; color: #b8bfcc">No inventa precios ni promete lo que no tienes. Si no sabe algo, lo dice y avisa a una persona.</p></div>
+</li>
+</ol>
+</div>
+<div style="flex: 1 1 400px; min-width: 0; position: sticky; top: 40px; display: flex; flex-direction: column; gap: 14px">
+<div role="img" aria-label="Ejemplo: un cliente pregunta a las 10:40 p. m. por una talla y el agente responde al instante y confirma el pedido contraentrega" style="background: #ffffff; color: #0a0a0a; border-radius: 4px; overflow: hidden">
+<div style="display: flex; align-items: center; gap: 12px; padding: 16px 18px; border-bottom: 1px solid #e3e7ee">
+<div style="width: 36px; height: 36px; border-radius: 50%; background: #0a0a0a; color: #ffffff; display: flex; align-items: center; justify-content: center; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 12px">TM</div>
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="font-weight: 600; font-size: 15px">Tu Marca</span><span style="font-size: 12px; color: #5b6472">Agente Timonel</span></div>
+</div>
+<div style="background: #f3f5f9; padding: 22px 16px; display: flex; flex-direction: column; gap: 12px; font-size: 14.5px; line-height: 1.5; min-height: 380px">
+<div class="m1" style="align-self: flex-end; max-width: 82%; background: #0a0a0a; color: #ffffff; padding: 10px 14px; border-radius: 12px 12px 2px 12px">Hola, ¿la chaqueta negra tiene talla M? ¿Hacen envíos contraentrega a Chía?<span style="display: block; text-align: right; font-size: 11px; color: #b8bfcc; margin-top: 4px">10:40 p. m.</span></div>
+<div class="m2" style="align-self: flex-start; max-width: 86%; background: #ffffff; padding: 10px 14px; border-radius: 12px 12px 12px 2px">¡Hola! Sí, nos quedan 3 en talla M. Cuesta $189.900 y llega a Chía en 2 a 3 días hábiles, pagando contraentrega. ¿Te la separo?<span style="display: block; text-align: right; font-size: 11px; color: #5b6472; margin-top: 4px">10:40 p. m.</span></div>
+<div class="m3" style="align-self: flex-end; max-width: 82%; background: #0a0a0a; color: #ffffff; padding: 10px 14px; border-radius: 12px 12px 2px 12px">Sí, porfa<span style="display: block; text-align: right; font-size: 11px; color: #b8bfcc; margin-top: 4px">10:41 p. m.</span></div>
+<div class="m4" style="align-self: flex-start; max-width: 86%; background: #ffffff; padding: 10px 14px; border-radius: 12px 12px 12px 2px">Listo. Te confirmo: chaqueta negra talla M, envío a Chía, pago contraentrega. ¿Todo correcto?<span style="display: block; text-align: right; font-size: 11px; color: #5b6472; margin-top: 4px">10:41 p. m.</span></div>
+<div class="m5" style="display: flex; align-items: center; gap: 12px; background: #0052d4; color: #ffffff; padding: 14px 16px; border-radius: 2px; margin-top: 4px">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="font-weight: 600; font-size: 14px">Pedido #1043 confirmado</span><span style="font-size: 12.5px; color: #dbe6fb">Contraentrega · listo para despacho</span></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= PROCESS ================= -->
+<section style="background: #ffffff">
+<div style="max-width: 1320px; margin: 0 auto; padding: 128px 32px; display: flex; flex-direction: column; gap: 64px">
+<h2 class="reveal" style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: clamp(36px, 5vw, 72px); line-height: 0.98; letter-spacing: -0.035em; max-width: 900px">De tu WhatsApp de hoy a uno que vende solo, en cuatro semanas.</h2>
+<ol style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 24px">
+<li class="stack" style="top: 32px; background: #ffffff; border: 2px solid #0a0a0a; min-height: 300px; padding: 44px; box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 24px 64px; align-items: flex-start">
+<span style="flex: 0 0 auto; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: clamp(88px, 12vw, 180px); line-height: 0.82; letter-spacing: -0.06em; color: #0052d4">01</span>
+<div style="flex: 1 1 380px; display: flex; flex-direction: column; gap: 14px; padding-top: 8px">
+<h3 style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: clamp(28px, 3vw, 44px); letter-spacing: -0.025em">Diagnóstico</h3>
+<p style="margin: 0; font-size: 19px; line-height: 1.6; color: #3c4350; max-width: 560px">Revisamos tu WhatsApp, tus pedidos y tus devoluciones, y medimos tu punto de partida.</p>
+<p style="margin: 0; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #5b6472">Semana 0</p>
+</div>
+</li>
+<li class="stack" style="top: 56px; background: #0a0a0a; color: #ffffff; border: 2px solid #0a0a0a; min-height: 300px; padding: 44px; box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 24px 64px; align-items: flex-start">
+<span style="flex: 0 0 auto; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: clamp(88px, 12vw, 180px); line-height: 0.82; letter-spacing: -0.06em; color: #ffffff">02</span>
+<div style="flex: 1 1 380px; display: flex; flex-direction: column; gap: 14px; padding-top: 8px">
+<h3 style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: clamp(28px, 3vw, 44px); letter-spacing: -0.025em">Implementación</h3>
+<p style="margin: 0; font-size: 19px; line-height: 1.6; color: #c7cdd8; max-width: 560px">Conectamos Timonel a tu tienda y a tu WhatsApp, lo entrenamos con tus productos y políticas, y lo probamos contigo antes de que atienda a tus clientes.</p>
+<p style="margin: 0; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #8a93a3">Semanas 1 a 4</p>
+</div>
+</li>
+<li class="stack" style="top: 80px; background: #0052d4; color: #ffffff; border: 2px solid #0a0a0a; min-height: 300px; padding: 44px; box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 24px 64px; align-items: flex-start">
+<span style="flex: 0 0 auto; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: clamp(88px, 12vw, 180px); line-height: 0.82; letter-spacing: -0.06em; color: #ffffff">03</span>
+<div style="flex: 1 1 380px; display: flex; flex-direction: column; gap: 14px; padding-top: 8px">
+<h3 style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: clamp(28px, 3vw, 44px); letter-spacing: -0.025em">Bitácora mensual</h3>
+<p style="margin: 0; font-size: 19px; line-height: 1.6; color: #ffffff; max-width: 560px">Cada mes ves conversaciones atendidas, ventas cerradas y pedidos confirmados frente a tu punto de partida.</p>
+<p style="margin: 0; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #dbe6fb">Cada mes</p>
+</div>
+</li>
+</ol>
+<!-- comparison -->
+<div class="reveal" style="overflow-x: auto; border-top: 2px solid #0a0a0a">
+<table style="width: 100%; min-width: 720px; border-collapse: collapse; font-size: 17px">
+<caption style="text-align: left; padding: 28px 0 8px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 28px; letter-spacing: -0.02em">Compara antes de decidir</caption>
+<thead>
+<tr style="text-align: left; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase">
+<th scope="col" style="padding: 20px 16px 20px 0; font-weight: 600; color: #5b6472; border-bottom: 1px solid #0a0a0a"></th>
+<th scope="col" style="padding: 20px 16px; font-weight: 600; color: #5b6472; border-bottom: 1px solid #0a0a0a">Un asesor más</th>
+<th scope="col" style="padding: 20px 16px; font-weight: 600; color: #5b6472; border-bottom: 1px solid #0a0a0a">Chatbot de botones</th>
+<th scope="col" style="padding: 20px 16px; font-weight: 700; color: #ffffff; background: #0052d4; border-bottom: 1px solid #0052d4">Timonel</th>
+</tr>
+</thead>
+<tbody>
+<tr><th scope="row" style="padding: 20px 16px 20px 0; text-align: left; font-weight: 600; border-bottom: 1px solid #d9dee7">Horario</th><td style="padding: 20px 16px; color: #3c4350; border-bottom: 1px solid #d9dee7">Hasta 42 h a la semana</td><td style="padding: 20px 16px; color: #3c4350; border-bottom: 1px solid #d9dee7">24/7</td><td style="padding: 20px 16px; font-weight: 700; border-bottom: 1px solid #d9dee7; border-left: 2px solid #0052d4; border-right: 2px solid #0052d4">24/7</td></tr>
+<tr><th scope="row" style="padding: 20px 16px 20px 0; text-align: left; font-weight: 600; border-bottom: 1px solid #d9dee7">Entiende preguntas abiertas</th><td style="padding: 20px 16px; color: #3c4350; border-bottom: 1px solid #d9dee7">Sí</td><td style="padding: 20px 16px; color: #3c4350; border-bottom: 1px solid #d9dee7">No, solo menús</td><td style="padding: 20px 16px; font-weight: 700; border-bottom: 1px solid #d9dee7; border-left: 2px solid #0052d4; border-right: 2px solid #0052d4">Sí</td></tr>
+<tr><th scope="row" style="padding: 20px 16px 20px 0; text-align: left; font-weight: 600; border-bottom: 1px solid #d9dee7">Consulta tu inventario real</th><td style="padding: 20px 16px; color: #3c4350; border-bottom: 1px solid #d9dee7">A mano</td><td style="padding: 20px 16px; color: #3c4350; border-bottom: 1px solid #d9dee7">Rara vez</td><td style="padding: 20px 16px; font-weight: 700; border-bottom: 1px solid #d9dee7; border-left: 2px solid #0052d4; border-right: 2px solid #0052d4">Automático</td></tr>
+<tr><th scope="row" style="padding: 20px 16px 20px 0; text-align: left; font-weight: 600; border-bottom: 1px solid #d9dee7">Confirma pedidos contraentrega</th><td style="padding: 20px 16px; color: #3c4350; border-bottom: 1px solid #d9dee7">Si le alcanza el tiempo</td><td style="padding: 20px 16px; color: #3c4350; border-bottom: 1px solid #d9dee7">No</td><td style="padding: 20px 16px; font-weight: 700; border-bottom: 1px solid #d9dee7; border-left: 2px solid #0052d4; border-right: 2px solid #0052d4">Cada pedido</td></tr>
+<tr><th scope="row" style="padding: 20px 16px 20px 0; text-align: left; font-weight: 600">Costo mensual</th><td style="padding: 20px 16px; color: #3c4350">Desde $2.000.000 + prestaciones</td><td style="padding: 20px 16px; color: #3c4350">Variable</td><td style="padding: 20px 16px; font-weight: 700; border: 2px solid #0052d4; border-top: none">$1.500.000<br><span style="font-weight: 500; font-size: 14px; color: #3c4350">$750.000 en el piloto</span></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- ================= CALCULATOR ================= -->
+<section id="calculadora" style="background: #0a0a0a; color: #ffffff">
+<div style="max-width: 1320px; margin: 0 auto; padding: 128px 32px; display: flex; flex-direction: column; gap: 56px">
+<div class="reveal" style="display: flex; flex-wrap: wrap; gap: 24px; justify-content: space-between; align-items: flex-end">
+<h2 style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: clamp(36px, 5vw, 72px); line-height: 0.98; letter-spacing: -0.035em; max-width: 820px">¿Cuánto se te devuelve cada mes?</h2>
+<p style="margin: 0; max-width: 360px; font-size: 16px; line-height: 1.6; color: #b8bfcc">Mueve los controles con los números de tu tienda. Es una estimación; en el diagnóstico la hacemos con tus datos reales.</p>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 64px; border-top: 1px solid #2a2f38; padding-top: 48px">
+<div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 36px">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; justify-content: space-between; gap: 12px; font-size: 16px"><label for="calc-pedidos" style="color: #c7cdd8">Pedidos contraentrega al mes</label><span style="font-weight: 700; font-variant-numeric: tabular-nums">{{pedidosTxt}}</span></div>
+<input id="calc-pedidos" type="range" min="50" max="3000" step="50" value="{{pedidos}}">
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; justify-content: space-between; gap: 12px; font-size: 16px"><label for="calc-ticket" style="color: #c7cdd8">Ticket promedio</label><span style="font-weight: 700; font-variant-numeric: tabular-nums">{{ticketTxt}}</span></div>
+<input id="calc-ticket" type="range" min="50000" max="500000" step="10000" value="{{ticket}}">
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; justify-content: space-between; gap: 12px; font-size: 16px"><label for="calc-dev" style="color: #c7cdd8">Porcentaje que se devuelve</label><span style="font-weight: 700; font-variant-numeric: tabular-nums">{{devTxt}}</span></div>
+<input id="calc-dev" type="range" min="5" max="40" step="1" value="{{dev}}">
+</div>
+</div>
+<div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 32px">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<span style="font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #8a93a3">Ventas que vuelven sin pagar · al mes</span>
+<span style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: clamp(48px, 6vw, 88px); line-height: 1; letter-spacing: -0.04em; font-variant-numeric: tabular-nums">{{perdidaTxt}}</span>
+<span style="font-size: 15px; color: #b8bfcc">{{devueltosTxt}} pedidos devueltos</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px; border-top: 1px solid #2a2f38; padding-top: 28px">
+<span style="font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #8a93a3">Si recuperas un tercio</span>
+<span style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: clamp(40px, 4.6vw, 64px); line-height: 1; letter-spacing: -0.04em; color: #ffffff; font-variant-numeric: tabular-nums"><span style="color: #4f86ea">+</span>{{recuperoTxt}}</span>
+<span style="font-size: 15px; color: #b8bfcc">en ventas cada mes</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= PILOT ================= -->
+<section id="piloto" style="background: #ffffff">
+<div style="max-width: 1320px; margin: 0 auto; padding: 128px 32px; display: flex; flex-direction: column; gap: 56px">
+<div class="reveal" style="display: flex; flex-wrap: wrap; gap: 24px; justify-content: space-between; align-items: flex-end">
+<h2 style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: clamp(36px, 5vw, 72px); line-height: 0.98; letter-spacing: -0.035em; max-width: 900px">Pruébalo a mitad de precio. Si no funciona, te devolvemos el anticipo.</h2>
+<p style="margin: 0; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #0052d4; font-weight: 600">Piloto Fundador · 3 cupos</p>
+</div>
+<div class="reveal" style="display: flex; flex-wrap: wrap; border: 2px solid #0a0a0a">
+<div style="flex: 1 1 440px; min-width: 0; padding: 44px; display: flex; flex-direction: column; gap: 22px; border-right: 2px solid #0a0a0a">
+<span style="font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #5b6472">Implementación de Timonel</span>
+<div style="display: flex; align-items: baseline; gap: 18px; flex-wrap: wrap">
+<span style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: clamp(52px, 6vw, 84px); line-height: 1; letter-spacing: -0.045em">$3.250.000</span>
+<span style="font-size: 20px; color: #5b6472; text-decoration: line-through">$6.500.000</span>
+</div>
+<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #3c4350">Luego <strong style="color: #0a0a0a">$750.000 al mes</strong> los primeros 3 meses; después, $1.500.000. Pagas 50% al empezar y 50% cuando el agente esté en marcha.</p>
+<p style="margin: 0; font-size: 16px; line-height: 1.6; color: #3c4350; border-top: 1px solid #d9dee7; padding-top: 20px">Solo hay tres cupos porque cada implementación la acompañamos de principio a fin. A cambio del descuento, medimos los resultados contigo y, si te funciona, publicamos el caso.</p>
+<a class="btn btn-dark" href="#agendar" style="align-self: flex-start; background: #0a0a0a; color: #ffffff; text-decoration: none; padding: 18px 28px; font-weight: 600; font-size: 17px; min-height: 56px; box-sizing: border-box; display: inline-flex; align-items: center">Quiero uno de los 3 cupos</a>
+</div>
+<div style="flex: 1 1 380px; min-width: 0; padding: 44px; display: flex; flex-direction: column; gap: 0">
+<span style="font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #5b6472; padding-bottom: 12px">Incluye</span>
+<ul style="margin: 0; padding: 0; list-style: none; font-size: 17px; line-height: 1.5">
+<li style="padding: 16px 0; border-bottom: 1px solid #d9dee7">Agente conectado a tu tienda y a tu WhatsApp</li>
+<li style="padding: 16px 0; border-bottom: 1px solid #d9dee7">Confirmación automática de pedidos contraentrega</li>
+<li style="padding: 16px 0; border-bottom: 1px solid #d9dee7">Entrenamiento con tus productos, tono y políticas</li>
+<li style="padding: 16px 0; border-bottom: 1px solid #d9dee7">Aviso de privacidad y autorización de datos</li>
+<li style="padding: 16px 0; border-bottom: 1px solid #d9dee7">Bitácora mensual con tus resultados</li>
+<li style="padding: 16px 0; font-weight: 700; color: #0052d4">Garantía: si en 4 semanas no funciona, te devolvemos el anticipo completo</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= FAQ ================= -->
+<section id="preguntas" style="background: #ffffff">
+<div style="max-width: 1320px; margin: 0 auto; padding: 128px 32px; display: flex; flex-wrap: wrap; gap: 64px">
+<h2 class="reveal" style="flex: 1 1 320px; margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: clamp(36px, 4.4vw, 64px); line-height: 0.98; letter-spacing: -0.035em">Preguntas antes de decidir</h2>
+<div style="flex: 2 1 560px; min-width: 0; border-top: 2px solid #0a0a0a">
+<details style="border-bottom: 1px solid #d9dee7">
+<summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 26px 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 21px; min-height: 44px">¿Y si la IA le responde mal a mis clientes?<span class="faq-x" aria-hidden="true" style="font-size: 32px; font-weight: 400; color: #0052d4; line-height: 1">+</span></summary>
+<p style="margin: 0 0 26px; font-size: 17px; line-height: 1.65; color: #3c4350; max-width: 680px">Timonel solo responde con la información de tu tienda y las políticas que tú apruebas. Si una pregunta se sale de eso, lo dice y le pasa la conversación a tu equipo. Revisamos las conversaciones cada semana y ajustamos lo que haga falta.</p>
+</details>
+<details style="border-bottom: 1px solid #d9dee7">
+<summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 26px 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 21px; min-height: 44px">Ya tengo un chatbot. ¿En qué es distinto?<span class="faq-x" aria-hidden="true" style="font-size: 32px; font-weight: 400; color: #0052d4; line-height: 1">+</span></summary>
+<p style="margin: 0 0 26px; font-size: 17px; line-height: 1.65; color: #3c4350; max-width: 680px">La mayoría funcionan con menús de botones. Timonel entiende las preguntas como las escribe la gente, consulta tu inventario, cierra la venta y confirma los pedidos contraentrega antes del despacho.</p>
+</details>
+<details style="border-bottom: 1px solid #d9dee7">
+<summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 26px 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 21px; min-height: 44px">¿Funciona con mi tienda?<span class="faq-x" aria-hidden="true" style="font-size: 32px; font-weight: 400; color: #0052d4; line-height: 1">+</span></summary>
+<p style="margin: 0 0 26px; font-size: 17px; line-height: 1.65; color: #3c4350; max-width: 680px">Trabajamos con tiendas en Shopify y WooCommerce. Si usas otra plataforma, cuéntanos en el diagnóstico y te decimos con honestidad si es viable.</p>
+</details>
+<details style="border-bottom: 1px solid #d9dee7">
+<summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 26px 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 21px; min-height: 44px">¿Cuánto tarda en estar listo?<span class="faq-x" aria-hidden="true" style="font-size: 32px; font-weight: 400; color: #0052d4; line-height: 1">+</span></summary>
+<p style="margin: 0 0 26px; font-size: 17px; line-height: 1.65; color: #3c4350; max-width: 680px">Entre 3 y 4 semanas desde que nos das acceso a tu tienda y a tu WhatsApp. En ese tiempo lo probamos contigo antes de que atienda a tus clientes.</p>
+</details>
+<details style="border-bottom: 1px solid #d9dee7">
+<summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 26px 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 21px; min-height: 44px">¿Qué pasa con los datos de mis clientes?<span class="faq-x" aria-hidden="true" style="font-size: 32px; font-weight: 400; color: #0052d4; line-height: 1">+</span></summary>
+<p style="margin: 0 0 26px; font-size: 17px; line-height: 1.65; color: #3c4350; max-width: 680px">Los datos son tuyos. Configuramos el aviso de privacidad y la autorización de tratamiento según la Ley 1581 de 2012 y los lineamientos de la Superintendencia de Industria y Comercio sobre inteligencia artificial.</p>
+</details>
+<details style="border-bottom: 1px solid #d9dee7">
+<summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 26px 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 21px; min-height: 44px">¿Hay costos aparte?<span class="faq-x" aria-hidden="true" style="font-size: 32px; font-weight: 400; color: #0052d4; line-height: 1">+</span></summary>
+<p style="margin: 0 0 26px; font-size: 17px; line-height: 1.65; color: #3c4350; max-width: 680px">Sí, y te los mostramos desde el principio: Meta cobra por los mensajes de WhatsApp y el modelo de IA cobra por uso. Para una marca mediana en Colombia suelen ser bajos, y los estimamos con tu volumen en el diagnóstico.</p>
+</details>
+</div>
+</div>
+</section>
+<!-- ================= FINAL CTA ================= -->
+<section id="agendar" style="background: #0052d4; color: #ffffff; overflow: hidden">
+<div style="max-width: 1320px; margin: 0 auto; padding: 120px 32px 0; display: flex; flex-wrap: wrap; gap: 32px 48px; align-items: flex-end">
+<div style="flex: 1 1 620px; min-width: 0; display: flex; flex-direction: column; gap: 40px; padding-bottom: 120px">
+<h2 class="reveal" style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: clamp(56px, 9.5vw, 156px); line-height: 0.88; letter-spacing: -0.055em">Toma el timón.</h2>
+<div class="reveal" style="display: flex; flex-direction: column; gap: 28px; border-top: 1px solid #ffffff; padding-top: 32px">
+<p style="margin: 0; max-width: 560px; font-size: 20px; line-height: 1.55; color: #ffffff">20 minutos por videollamada. Revisamos tu WhatsApp, hacemos la cuenta con tus números y te mostramos el agente funcionando. Sin compromiso.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 16px 24px; align-items: center">
+<a class="btn btn-white" href="https://cal.com/rudder-commerce-izsvx2/diagnostico" style="background: #ffffff; color: #0a0a0a; text-decoration: none; padding: 20px 32px; font-weight: 700; font-size: 18px; min-height: 60px; box-sizing: border-box; display: inline-flex; align-items: center; gap: 12px">Agendar mi diagnóstico
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+<span style="font-size: 15px; color: #dbe6fb">Quedan 3 cupos de Piloto Fundador este mes</span>
+</div>
+</div>
+</div>
+<div style="flex: 0 1 400px; min-width: 240px; display: flex; flex-direction: column; align-items: center; gap: 0">
+<p class="reveal" style="margin: 0 0 18px; align-self: flex-start; background: #ffffff; color: #0a0a0a; padding: 14px 18px; font-size: 16px; font-weight: 600; line-height: 1.4; max-width: 260px; border-radius: 14px 14px 14px 2px">¡Hola! Soy Ruddy. Te espero en el diagnóstico.</p>
+<img class="ruddy" src="/assets/ruddy.webp" alt="Ruddy, el pingüino capitán de Rudder Commerce, saludando" style="width: 100%; max-width: 360px; height: auto; display: block; margin-bottom: -6px">
+</div>
+</div>
+</section>
+<!-- ================= FOOTER ================= -->
+<footer style="background: #0a0a0a; color: #b8bfcc">
+<div style="max-width: 1320px; margin: 0 auto; padding: 48px 32px; display: flex; flex-wrap: wrap; gap: 24px; justify-content: space-between; align-items: center; font-size: 14px">
+<span style="display: inline-flex; align-items: center; gap: 12px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; color: #ffffff; letter-spacing: 0.16em"><img src="/assets/lw.webp" alt="" width="28" height="28" style="display: block; width: 28px; height: 28px">RUDDER COMMERCE <span style="font-weight: 500; letter-spacing: 0; color: #8a93a3">· Direction for Scale.</span></span>
+<div style="display: flex; flex-wrap: wrap; gap: 22px">
+<a href="mailto:johangordillo@ruddercommerce.com" style="color: #b8bfcc">johangordillo@ruddercommerce.com</a>
+<a href="/privacidad" style="color: #b8bfcc">Política de privacidad</a>
+</div>
+</div>
+</footer>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/three@0.149.0/build/three.min.js"></script>
+<script>
+/* Tiny template binder: fills {{name}} holes in attributes and text from a values object. */
+(function(){
+var binds=[];
+function walk(n){
+if(n.nodeType===3){ if(n.nodeValue.indexOf('{{')>-1) binds.push({node:n,tpl:n.nodeValue}); return; }
+if(n.nodeType!==1) return;
+if(n.tagName==='SCRIPT'||n.tagName==='STYLE') return;
+for(var i=0;i<n.attributes.length;i++){var a=n.attributes[i]; if(a.value.indexOf('{{')>-1) binds.push({el:n,attr:a.name,tpl:a.value});}
+for(var c=n.firstChild;c;c=c.nextSibling) walk(c);
+}
+walk(document.body);
+window.renderVals=function(v){
+binds.forEach(function(b){
+var out=b.tpl.replace(/\{\{\s*([\w.]+)\s*\}\}/g,function(_,k){return v[k]==null?'':v[k];});
+if(b.node){ if(b.node.nodeValue!==out) b.node.nodeValue=out; }
+else if(b.attr==='value'){ if(b.el.value!==out) b.el.value=out; }
+else if(b.el.getAttribute(b.attr)!==out) b.el.setAttribute(b.attr,out);
+});
+};
+})();
+</script>
+<script>
+var ctx={canvasEl:document.getElementById('scene')};
+var state={pedidos:600,ticket:150000,dev:25};
+function fmt(n){return '$'+Math.round(n).toLocaleString('es-CO');}
+function update(){
+var dv=Math.round(state.pedidos*state.dev/100), p=dv*state.ticket;
+renderVals({pedidos:state.pedidos,ticket:state.ticket,dev:state.dev,pedidosTxt:state.pedidos.toLocaleString('es-CO'),ticketTxt:fmt(state.ticket),devTxt:state.dev+'%',devueltosTxt:dv.toLocaleString('es-CO'),perdidaTxt:fmt(p),recuperoTxt:fmt(p/3)});
+}
+[['calc-pedidos','pedidos'],['calc-ticket','ticket'],['calc-dev','dev']].forEach(function(x){
+document.getElementById(x[0]).addEventListener('input',function(e){state[x[1]]=Number(e.target.value);update();});
+});
+update();
+function initScene(){
+var THREE = window.THREE;
+var canvas = ctx.canvasEl;
+var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: false });
+renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+renderer.setClearColor(0x0a0a0a, 1);
+renderer.outputEncoding = THREE.sRGBEncoding;
+ctx.renderer = renderer;
+var scene = new THREE.Scene();
+scene.fog = new THREE.Fog(0x0a0a0a, 9, 22);
+var camera = new THREE.PerspectiveCamera(35, 1, 0.1, 100);
+camera.position.set(0, 0, 11);
+// Lights: cool key, cobalt rim, soft fill
+scene.add(new THREE.AmbientLight(0xffffff, 0.25));
+var key = new THREE.DirectionalLight(0xffffff, 1.6); key.position.set(4, 6, 8); scene.add(key);
+var rim = new THREE.PointLight(0x0052d4, 26, 20); rim.position.set(-5, -2, -3); scene.add(rim);
+var fill = new THREE.PointLight(0xffffff, 6, 18); fill.position.set(-6, 4, 6); scene.add(fill);
+var steel = new THREE.MeshStandardMaterial({ color: 0x1b1d22, metalness: 0.75, roughness: 0.32 });
+var steelLight = new THREE.MeshStandardMaterial({ color: 0x2b2f36, metalness: 0.7, roughness: 0.4 });
+var cobalt = new THREE.MeshStandardMaterial({ color: 0x0052d4, metalness: 0.45, roughness: 0.28, emissive: 0x001a4d, emissiveIntensity: 0.6 });
+// The helm
+var wheel = new THREE.Group();
+wheel.add(new THREE.Mesh(new THREE.TorusGeometry(2.0, 0.13, 32, 160), steel));
+wheel.add(new THREE.Mesh(new THREE.TorusGeometry(1.45, 0.055, 24, 140), steelLight));
+var hub = new THREE.Mesh(new THREE.CylinderGeometry(0.42, 0.42, 0.42, 64), cobalt);
+hub.rotation.x = Math.PI / 2; wheel.add(hub);
+var cap = new THREE.Mesh(new THREE.CylinderGeometry(0.2, 0.2, 0.46, 48), new THREE.MeshStandardMaterial({ color: 0x0a0a0a, metalness: 0.3, roughness: 0.6 }));
+cap.rotation.x = Math.PI / 2; wheel.add(cap);
+for (var i = 0; i < 8; i++) {
+var a = i * Math.PI / 4;
+var spoke = new THREE.Group();
+var bar = new THREE.Mesh(new THREE.CylinderGeometry(0.075, 0.075, 2.0, 24), steel);
+bar.position.y = 1.4; spoke.add(bar);
+var handle = new THREE.Mesh(new THREE.CylinderGeometry(0.1, 0.13, 0.75, 32), steelLight);
+handle.position.y = 2.72; spoke.add(handle);
+var knob = new THREE.Mesh(new THREE.SphereGeometry(0.13, 32, 16), steelLight);
+knob.position.y = 3.1; spoke.add(knob);
+spoke.rotation.z = a;
+wheel.add(spoke);
+}
+scene.add(wheel);
+var target = { x: 0, y: 0 }, cur = { x: 0, y: 0 };
+ctx.onMove = function (e) {
+target.x = (e.clientX / window.innerWidth - 0.5);
+target.y = (e.clientY / window.innerHeight - 0.5);
+};
+window.addEventListener('pointermove', ctx.onMove, { passive: true });
+var layout = function () {
+var w = canvas.clientWidth || 1, h = canvas.clientHeight || 1;
+renderer.setSize(w, h, false);
+camera.aspect = w / h; camera.updateProjectionMatrix();
+var narrow = w < 820;
+wheel.position.set(narrow ? 0 : 2.6, narrow ? 0.6 : 0.2, 0);
+wheel.scale.setScalar(narrow ? 0.8 : 1.15);
+};
+ctx.ro = new ResizeObserver(layout); ctx.ro.observe(canvas); layout();
+var self = ctx, t0 = performance.now();
+var tick = function (now) {
+var t = (now - t0) / 1000;
+var scroll = window.scrollY || document.documentElement.scrollTop || 0;
+cur.x += (target.x - cur.x) * 0.05; cur.y += (target.y - cur.y) * 0.05;
+wheel.rotation.z = -(scroll * 0.0035) - (reduce ? 0 : t * 0.06);
+wheel.rotation.y = -0.38 + cur.x * 0.5;
+wheel.rotation.x = 0.12 + cur.y * 0.35;
+camera.position.z = 11 + Math.min(scroll, 900) * 0.004;
+renderer.render(scene, camera);
+self.raf = requestAnimationFrame(tick);
+};
+ctx.raf = requestAnimationFrame(tick);
+}
+if(window.THREE&&ctx.canvasEl){initScene();}
+</script>
+</body>
+</html>
