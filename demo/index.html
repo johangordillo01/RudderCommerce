@@ -126,13 +126,14 @@ a{color:inherit}
     <div style="display:flex;flex-direction:column;gap:22px">
       <p class="eyebrow"><span class="dot" aria-hidden="true"></span>Demo en vivo · Sistema Timonel</p>
       <h1>Escríbele como si fueras su cliente.</h1>
-      <p class="lead">Casa Ocre es una tienda de ropa ficticia con 18 productos e inventario de prueba. Pregunta por tallas, envíos o pagos, y haz un pedido contraentrega de principio a fin.</p>
+      <p class="lead">Casa Ocre es una tienda de ropa ficticia con 18 productos e inventario de prueba. Pregunta por tallas, envíos o pagos, y haz un pedido contraentrega de principio a fin, hasta recibir la guía por el chat.</p>
       <ul class="tries" aria-label="Ideas para probar">
         <li><button type="button" data-q="Hola, ¿la chaqueta de jean tiene talla L?"><span>01</span>Pide una talla que está agotada</button></li>
         <li><button type="button" data-q="¿Hacen envíos contraentrega a Medellín? ¿Cuánto vale?"><span>02</span>Pregunta por el envío a tu ciudad</button></li>
         <li><button type="button" data-q="Busco un regalo para mi novia de máximo 150 mil"><span>03</span>Pide una recomendación con presupuesto</button></li>
         <li><button type="button" data-q="Quiero comprar los tenis blancos talla 38, pago contraentrega"><span>04</span>Haz un pedido completo</button></li>
         <li><button type="button" data-q="Quiero hablar con una persona"><span>05</span>Pide hablar con un humano</button></li>
+        <li><button type="button" data-q="Hola, ¿dónde va mi pedido 4821?"><span>06</span>Pregunta por la guía de un pedido</button></li>
       </ul>
     </div>
     <div class="intro-foot">
@@ -182,7 +183,7 @@ a{color:inherit}
       <div class="stat"><b id="sResp">—</b><span>Respuesta promedio</span></div>
       <div class="stat"><b id="sOrders">0</b><span>Pedidos confirmados</span></div>
     </div>
-    <ul class="log" id="log"><li class="empty">Escribe en el chat y aquí verás cada acción: inventario consultado, envío cotizado, pedido creado y confirmado.</li></ul>
+    <ul class="log" id="log"><li class="empty">Escribe en el chat y aquí verás cada acción: inventario consultado, envío cotizado, pedido creado y confirmado, y la guía enviada.</li></ul>
     <div class="orders" id="orders"></div>
   </aside>
 </div>
@@ -224,10 +225,28 @@ a{color:inherit}
   function renderOrder(o){
     var el=document.getElementById('o'+o.numero);
     if(!el){el=document.createElement('div');el.className='order';el.id='o'+o.numero;ordersEl.prepend(el);}
-    var ok=o.estado==='confirmado_listo_para_despacho';
-    el.innerHTML='<div class="row"><b>Pedido #'+esc(o.numero)+'</b><span class="badge'+(ok?' ok':'')+'">'+(ok?'Listo para despacho':'Por confirmar')+'</span></div>'+
+    var ok=o.estado==='confirmado_listo_para_despacho'||o.estado==='en_camino';
+    el.innerHTML='<div class="row"><b>Pedido #'+esc(o.numero)+'</b><span class="badge'+(ok?' ok':'')+'">'+(o.estado==='en_camino'?'En camino':(ok?'Listo para despacho':'Por confirmar'))+'</span></div>'+
       '<div>'+o.lineas.map(function(l){return esc(l.cantidad+' × '+l.producto+' · '+l.talla+' · '+l.color);}).join('<br>')+'</div>'+
       '<div class="row"><span>'+esc(o.ciudad)+' · '+(o.metodo_pago==='contraentrega'?'Contraentrega':'Link de pago')+'</span><b>'+money(o.total)+'</b></div>';
+  }
+  var TRANSP=['Interrapidísimo','Envía','Servientrega','Coordinadora'];
+  function guiaDe(numero){var n=parseInt(String(numero).replace(/\D/g,''),10)||0;return {transportadora:TRANSP[n%4],guia:'2400'+n+'5813'};}
+  function showDispatch(numero){
+    chips.innerHTML=''; chips.style.display='flex';
+    var b=document.createElement('button'); b.className='chip'; b.type='button'; b.textContent='📦 Simular despacho del pedido #'+numero;
+    b.addEventListener('click',function(){dispatch(numero);}); chips.appendChild(b);
+  }
+  async function dispatch(numero){
+    if(busy) return; chips.style.display='none';
+    var g=guiaDe(numero), o=orders[numero];
+    logItem('📦','<b>Pedido #'+esc(numero)+' despachado</b><small>Shopify marcó el envío con la guía de '+esc(g.transportadora)+'</small>');
+    typing.classList.add('on'); scroll(); await wait(1100); typing.classList.remove('on');
+    var text='📦 ¡Tu pedido *#'+numero+'* ya va en camino!\n\nTransportadora: *'+g.transportadora+'*\nGuía: *'+g.guia+'*'+(o?'\nLlega en '+o.tiempo_entrega:'')+'\n\nTe aviso por aquí si hay alguna novedad con la entrega. Si quieres saber dónde va, escríbeme cuando quieras.';
+    bubble(text,'in');
+    history.push({role:'assistant',content:text});
+    if(o){o.estado='en_camino';renderOrder(o);}
+    logItem('✓','<b>Envió la guía por WhatsApp</b><small>'+esc(g.transportadora)+' · '+esc(g.guia)+'. El cliente no tuvo que buscarla en el correo.</small>',true);
   }
   function handleEvents(events){
     (events||[]).forEach(function(e){
@@ -252,7 +271,9 @@ a{color:inherit}
           var oc=orders[o.numero]; var card=document.createElement('div'); card.className='order-card';
           card.innerHTML='<div class="oc-top"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Pedido #'+esc(o.numero)+' confirmado</div>'+
             '<div class="oc-body">'+(oc?money(oc.total)+' · '+(oc.metodo_pago==='contraentrega'?'Contraentrega':'Link de pago')+'<br>Llega en '+esc(oc.tiempo_entrega):'Listo para despacho')+'</div>';
-          pendingCards.push(card); break;
+          pendingCards.push(card); showDispatch(o.numero); break;
+        case 'rastrear_pedido':
+          logItem('➜','<b>Rastreó el envío</b><small>'+esc((o.transportadora||'')+' · guía '+(o.guia||'')+' · '+(o.estado||''))+'</small>'); break;
         case 'pasar_a_asesor':
           logItem('☺','<b>Pasó la conversación a un asesor</b><small>'+esc(i.motivo||'')+'</small>'); break;
       }
