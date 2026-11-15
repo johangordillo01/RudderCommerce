@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Demo en vivo · Sistema Timonel · Rudder Commerce</title>
+<meta name="description" content="Prueba en vivo un agente de IA que vende por WhatsApp: consulta inventario, cotiza el envío y confirma pedidos contraentrega.">
+<meta property="og:title" content="Demo en vivo · Sistema Timonel">
+<meta property="og:description" content="Escríbele como si fueras su cliente. Un agente de IA que responde, cierra la venta y confirma el pedido.">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="icon" href="/assets/fav.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{background:#0a0a0a;color:#ffffff;font-family:Inter,-apple-system,'Segoe UI',Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.app{min-height:100dvh;display:grid;grid-template-columns:minmax(280px,1fr) 420px minmax(300px,1fr);gap:40px;max-width:1360px;margin:0 auto;padding:28px 32px;align-items:center}
+/* ---------- intro column ---------- */
+.intro{display:flex;flex-direction:column;gap:28px;align-self:stretch;justify-content:space-between;padding:8px 0}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:13px;letter-spacing:.16em}
+.brand img{width:30px;height:30px;display:block}
+.eyebrow{margin:0;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#8a93a3;display:flex;align-items:center;gap:10px}
+.dot{width:8px;height:8px;border-radius:50%;background:#2fd06b;box-shadow:0 0 0 4px rgba(47,208,107,.18);animation:pulse 1.8s ease-in-out infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 7px rgba(47,208,107,0)}}
+.intro h1{margin:0;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:clamp(34px,3.4vw,52px);line-height:1;letter-spacing:-.035em}
+.intro p.lead{margin:0;font-size:16px;line-height:1.6;color:#b8bfcc;max-width:420px}
+.tries{list-style:none;margin:0;padding:0;border-top:1px solid #2a2f38}
+.tries li{border-bottom:1px solid #2a2f38}
+.tries button{all:unset;cursor:pointer;display:flex;gap:14px;align-items:baseline;width:100%;padding:14px 0;font-size:15px;color:#e6e9ef;transition:color .2s,padding .3s}
+.tries button:hover{color:#ffffff;padding-left:8px}
+.tries button span{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:12px;color:#4f86ea}
+.intro-foot{display:flex;flex-direction:column;gap:14px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;background:#0052d4;color:#ffffff;text-decoration:none;font-weight:600;font-size:16px;transition:background .25s,color .25s;align-self:flex-start}
+.btn:hover{background:#ffffff;color:#0a0a0a}
+.back{font-size:14px;color:#8a93a3;text-decoration:none}
+.back:hover{color:#ffffff}
+/* ---------- phone ---------- */
+.phone{height:min(860px,calc(100dvh - 56px));background:#efeae2;border-radius:28px;overflow:hidden;display:flex;flex-direction:column;color:#111b21;box-shadow:0 0 0 10px #1b1d22,0 30px 80px rgba(0,82,212,.18)}
+.chat-head{display:flex;align-items:center;gap:12px;padding:12px 14px;background:#0a0a0a;color:#ffffff}
+.avatar{width:40px;height:40px;border-radius:50%;background:#b5651d;color:#ffffff;display:flex;align-items:center;justify-content:center;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:14px;flex:0 0 auto}
+.who{display:flex;flex-direction:column;gap:2px;flex:1;min-width:0}
+.who b{font-size:16px;font-weight:600}
+.who small{font-size:12.5px;color:#b8bfcc;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.icon-btn{all:unset;cursor:pointer;color:#ffffff;font-size:13px;font-weight:600;padding:8px 10px;border:1px solid rgba(255,255,255,.3);border-radius:4px;white-space:nowrap}
+.icon-btn:hover{border-color:#ffffff}
+.panel-toggle{display:none}
+.msgs{flex:1;overflow-y:auto;padding:14px 12px 8px;display:flex;flex-direction:column;gap:4px;scroll-behavior:smooth}
+.notice{align-self:center;max-width:92%;background:#fff6d6;color:#54656f;font-size:12.5px;line-height:1.45;text-align:center;padding:8px 12px;border-radius:8px;margin:4px 0 10px;box-shadow:0 1px .5px rgba(11,20,26,.13)}
+.day{align-self:center;background:#ffffff;color:#54656f;font-size:12px;padding:5px 12px;border-radius:8px;margin-bottom:6px;box-shadow:0 1px .5px rgba(11,20,26,.13)}
+.b{max-width:84%;padding:7px 9px 6px 10px;border-radius:8px;font-size:14.5px;line-height:1.42;box-shadow:0 1px .5px rgba(11,20,26,.13);position:relative;white-space:pre-wrap;overflow-wrap:anywhere;animation:pop .25s cubic-bezier(.2,.7,.2,1)}
+@keyframes pop{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.b.in{align-self:flex-start;background:#ffffff;border-top-left-radius:0}
+.b.out{align-self:flex-end;background:#d9fdd3;border-top-right-radius:0}
+.b + .b.in,.b.in + .b.in{margin-top:2px}
+.b.out + .b.in,.b.in + .b.out{margin-top:8px}
+.meta{float:right;margin:6px 0 -4px 10px;font-size:11px;color:#667781;display:inline-flex;gap:3px;align-items:center}
+.ticks{color:#8696a0;font-size:12px;letter-spacing:-3px;padding-right:3px}
+.ticks.read{color:#53bdeb}
+.b.err{align-self:center;background:#ffe3e3;color:#7a1b1b;font-size:13px}
+.order-card{align-self:flex-start;max-width:84%;background:#ffffff;border-radius:8px;overflow:hidden;box-shadow:0 1px .5px rgba(11,20,26,.13);margin-top:6px;animation:pop .25s}
+.order-card .oc-top{background:#0052d4;color:#ffffff;padding:10px 12px;display:flex;align-items:center;gap:10px;font-size:13.5px;font-weight:600}
+.order-card .oc-body{padding:8px 12px 10px;font-size:13px;color:#3b4a54;line-height:1.5}
+.typing{align-self:flex-start;background:#ffffff;border-radius:8px;border-top-left-radius:0;padding:10px 14px;display:none;gap:4px;box-shadow:0 1px .5px rgba(11,20,26,.13);margin-top:8px}
+.typing.on{display:inline-flex}
+.typing i{width:7px;height:7px;border-radius:50%;background:#8696a0;animation:bl 1.2s infinite}
+.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+@keyframes bl{0%,60%,100%{opacity:.3;transform:none}30%{opacity:1;transform:translateY(-3px)}}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:8px 12px 2px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{all:unset;cursor:pointer;flex:0 0 auto;background:#ffffff;color:#0052d4;border:1px solid #c9d8f5;border-radius:18px;padding:7px 12px;font-size:13px;font-weight:500}
+.chip:hover{background:#0052d4;color:#ffffff;border-color:#0052d4}
+.composer{display:flex;gap:8px;align-items:flex-end;padding:8px 10px calc(10px + env(safe-area-inset-bottom))}
+.composer textarea{flex:1;resize:none;border:none;outline:none;border-radius:22px;padding:11px 16px;font:inherit;font-size:15px;line-height:1.35;max-height:120px;background:#ffffff;color:#111b21;box-shadow:0 1px .5px rgba(11,20,26,.13)}
+.send{all:unset;cursor:pointer;width:46px;height:46px;border-radius:50%;background:#0052d4;color:#ffffff;display:flex;align-items:center;justify-content:center;flex:0 0 auto;transition:background .2s}
+.send:hover{background:#003c9e}
+.send:disabled{opacity:.5;cursor:default}
+/* ---------- side panel ---------- */
+.panel{align-self:stretch;display:flex;flex-direction:column;gap:22px;padding:8px 0;min-height:0}
+.panel h2{margin:0;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:22px;letter-spacing:-.02em}
+.panel .sub{margin:6px 0 0;font-size:14px;color:#8a93a3;line-height:1.5}
+.stats{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid #2a2f38;border-bottom:1px solid #2a2f38}
+.stat{padding:16px 0;display:flex;flex-direction:column;gap:4px}
+.stat + .stat{border-left:1px solid #2a2f38;padding-left:18px}
+.stat b{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:30px;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.stat span{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8a93a3}
+.log{list-style:none;margin:0;padding:0;overflow-y:auto;flex:1;min-height:120px;display:flex;flex-direction:column;gap:2px}
+.log li{display:grid;grid-template-columns:22px 1fr;gap:10px;padding:10px 0;border-bottom:1px solid #1f232a;font-size:14px;line-height:1.45;color:#c7cdd8;animation:pop .3s}
+.log li .ic{color:#4f86ea;font-weight:700;font-size:13px;padding-top:1px}
+.log li b{color:#ffffff;font-weight:600}
+.log li small{display:block;color:#8a93a3;font-size:12.5px;margin-top:2px}
+.log li.ok .ic{color:#2fd06b}
+.log .empty{display:block;color:#5b6472;font-size:14px;border:none}
+.orders{display:flex;flex-direction:column;gap:10px}
+.order{border:1px solid #2a2f38;padding:14px;display:flex;flex-direction:column;gap:6px;font-size:13.5px;color:#c7cdd8;animation:pop .3s}
+.order .row{display:flex;justify-content:space-between;gap:10px;align-items:center}
+.order b{color:#ffffff;font-size:15px}
+.badge{font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;padding:4px 8px;background:#3a2f12;color:#f0c45a;white-space:nowrap}
+.badge.ok{background:#0f3320;color:#2fd06b}
+.panel-close{display:none}
+.scrim{display:none}
+.msgs > *{flex-shrink:0}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+/* ---------- responsive ---------- */
+@media (max-width:1180px){.app{grid-template-columns:1fr 420px;}.intro{display:none}}
+@media (max-width:860px){
+  .icon-btn{padding:7px 9px;font-size:12.5px}
+  .app{display:block;padding:0;min-height:0}
+  .phone{height:100dvh;border-radius:0;box-shadow:none}
+  .panel-toggle{display:inline-block}
+  .panel{position:fixed;inset:auto 0 0 0;height:78dvh;background:#0a0a0a;padding:22px 20px calc(20px + env(safe-area-inset-bottom));transform:translateY(105%);transition:transform .35s cubic-bezier(.2,.8,.2,1);z-index:20;border-top:1px solid #2a2f38;box-shadow:0 -20px 60px rgba(0,0,0,.5)}
+  .panel.open{transform:none}
+  .panel-close{display:inline-block;align-self:flex-end;margin-bottom:-10px}
+  .scrim{display:block;position:fixed;inset:0;background:rgba(0,0,0,.45);opacity:0;pointer-events:none;transition:opacity .3s;z-index:15}
+  .scrim.on{opacity:1;pointer-events:auto}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}}
+</style>
+</head>
+<body>
+<div class="app">
+  <!-- Intro (desktop) -->
+  <aside class="intro">
+    <a class="brand" href="/" aria-label="Rudder Commerce, inicio"><img src="/assets/lw.webp" alt="" width="30" height="30">RUDDER COMMERCE</a>
+    <div style="display:flex;flex-direction:column;gap:22px">
+      <p class="eyebrow"><span class="dot" aria-hidden="true"></span>Demo en vivo · Sistema Timonel</p>
+      <h1>Escríbele como si fueras su cliente.</h1>
+      <p class="lead">Casa Ocre es una tienda de ropa ficticia con 18 productos e inventario de prueba. Pregunta por tallas, envíos o pagos, y haz un pedido contraentrega de principio a fin.</p>
+      <ul class="tries" aria-label="Ideas para probar">
+        <li><button type="button" data-q="Hola, ¿la chaqueta de jean tiene talla L?"><span>01</span>Pide una talla que está agotada</button></li>
+        <li><button type="button" data-q="¿Hacen envíos contraentrega a Medellín? ¿Cuánto vale?"><span>02</span>Pregunta por el envío a tu ciudad</button></li>
+        <li><button type="button" data-q="Busco un regalo para mi novia de máximo 150 mil"><span>03</span>Pide una recomendación con presupuesto</button></li>
+        <li><button type="button" data-q="Quiero comprar los tenis blancos talla 38, pago contraentrega"><span>04</span>Haz un pedido completo</button></li>
+        <li><button type="button" data-q="Quiero hablar con una persona"><span>05</span>Pide hablar con un humano</button></li>
+      </ul>
+    </div>
+    <div class="intro-foot">
+      <a class="btn" href="https://cal.com/rudder-commerce-izsvx2/diagnostico">Quiero esto en mi tienda
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="back" href="/">← Volver a ruddercommerce.com</a>
+    </div>
+  </aside>
+
+  <!-- Phone -->
+  <main class="phone" aria-label="Chat de demostración con Casa Ocre">
+    <header class="chat-head">
+      <div class="avatar" aria-hidden="true">CO</div>
+      <div class="who"><b>Casa Ocre</b><small id="status">en línea · atiende Timonel</small></div>
+      <button class="icon-btn panel-toggle" type="button" id="openPanel" aria-controls="panel" aria-expanded="false">Ver panel</button>
+      <button class="icon-btn" type="button" id="reset" title="Empezar una conversación nueva">Reiniciar</button>
+    </header>
+    <div class="msgs" id="msgs" role="log" aria-live="polite">
+      <div class="notice">Demo de <b>Rudder Commerce</b>. Casa Ocre es una tienda ficticia: los productos, precios y pedidos son de prueba y no se cobra nada. No escribas datos personales reales.</div>
+      <div class="day">HOY</div>
+      <div class="typing" id="typing" aria-label="Escribiendo"><i></i><i></i><i></i></div>
+    </div>
+    <div class="chips" id="chips">
+      <button class="chip" type="button" data-q="¿La chaqueta de jean tiene talla M?">¿Chaqueta de jean en M?</button>
+      <button class="chip" type="button" data-q="¿Hacen envíos contraentrega a Medellín?">Envío a Medellín</button>
+      <button class="chip" type="button" data-q="Busco un regalo de máximo 150 mil">Regalo hasta $150 mil</button>
+      <button class="chip" type="button" data-q="¿Cómo funcionan los cambios?">Cambios</button>
+    </div>
+    <form class="composer" id="form" autocomplete="off">
+      <label class="sr" for="input">Escribe un mensaje</label>
+      <textarea id="input" rows="1" maxlength="700" placeholder="Escribe un mensaje"></textarea>
+      <button class="send" id="send" type="submit" aria-label="Enviar">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.4 20.4 21 12 3.4 3.6 3.4 10l12.6 2-12.6 2z"/></svg>
+      </button>
+    </form>
+  </main>
+
+  <!-- Store panel -->
+  <div class="scrim" id="scrim"></div>
+  <aside class="panel" id="panel" aria-label="Panel de la tienda">
+    <button class="icon-btn panel-close" type="button" id="closePanel">Cerrar</button>
+    <div>
+      <h2>Lo que hace Timonel</h2>
+      <p class="sub">Lo que tu equipo vería detrás de cada conversación.</p>
+    </div>
+    <div class="stats">
+      <div class="stat"><b id="sResp">—</b><span>Respuesta promedio</span></div>
+      <div class="stat"><b id="sOrders">0</b><span>Pedidos confirmados</span></div>
+    </div>
+    <ul class="log" id="log"><li class="empty">Escribe en el chat y aquí verás cada acción: inventario consultado, envío cotizado, pedido creado y confirmado.</li></ul>
+    <div class="orders" id="orders"></div>
+  </aside>
+</div>
+
+<script>
+(function(){
+  var msgs=document.getElementById('msgs'), typing=document.getElementById('typing'), form=document.getElementById('form'),
+      input=document.getElementById('input'), sendBtn=document.getElementById('send'), chips=document.getElementById('chips'),
+      log=document.getElementById('log'), ordersEl=document.getElementById('orders'), statusEl=document.getElementById('status'),
+      panel=document.getElementById('panel'), scrim=document.getElementById('scrim'), openBtn=document.getElementById('openPanel');
+  var pendingCards=[];
+  var history=[], busy=false, times=[], confirmed=0, orders={};
+
+  function money(n){return '$'+Math.round(n).toLocaleString('es-CO');}
+  function clock(){return new Date().toLocaleTimeString('es-CO',{hour:'numeric',minute:'2-digit'}).replace(/\s?a\.?\s?m\.?/i,' a. m.').replace(/\s?p\.?\s?m\.?/i,' p. m.');}
+  function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+  function fmtWa(s){
+    return esc(s)
+      .replace(/\*\*(.+?)\*\*/g,'<b>$1</b>')
+      .replace(/(^|[\s(])\*([^*\n]+)\*(?=[\s.,!?;:)]|$)/g,'$1<b>$2</b>')
+      .replace(/(^|[\s(])_([^_\n]+)_(?=[\s.,!?;:)]|$)/g,'$1<i>$2</i>');
+  }
+  function scroll(){msgs.scrollTop=msgs.scrollHeight;}
+  function bubble(text,who,opts){
+    var d=document.createElement('div'); d.className='b '+who;
+    var meta='<span class="meta">'+clock()+(who==='out'?' <span class="ticks">✓✓</span>':'')+'</span>';
+    d.innerHTML=fmtWa(text)+meta;
+    msgs.insertBefore(d,typing); scroll(); return d;
+  }
+  function errBubble(t){var d=document.createElement('div');d.className='b err';d.textContent=t;msgs.insertBefore(d,typing);scroll();}
+  function wait(ms){return new Promise(function(r){setTimeout(r,ms);});}
+
+  function logItem(icon,html,ok){
+    var empty=log.querySelector('.empty'); if(empty) empty.remove();
+    var li=document.createElement('li'); if(ok) li.className='ok';
+    li.innerHTML='<span class="ic" aria-hidden="true">'+icon+'</span><div>'+html+'</div>';
+    log.appendChild(li); log.scrollTop=log.scrollHeight;
+  }
+  function renderOrder(o){
+    var el=document.getElementById('o'+o.numero);
+    if(!el){el=document.createElement('div');el.className='order';el.id='o'+o.numero;ordersEl.prepend(el);}
+    var ok=o.estado==='confirmado_listo_para_despacho';
+    el.innerHTML='<div class="row"><b>Pedido #'+esc(o.numero)+'</b><span class="badge'+(ok?' ok':'')+'">'+(ok?'Listo para despacho':'Por confirmar')+'</span></div>'+
+      '<div>'+o.lineas.map(function(l){return esc(l.cantidad+' × '+l.producto+' · '+l.talla+' · '+l.color);}).join('<br>')+'</div>'+
+      '<div class="row"><span>'+esc(o.ciudad)+' · '+(o.metodo_pago==='contraentrega'?'Contraentrega':'Link de pago')+'</span><b>'+money(o.total)+'</b></div>';
+  }
+  function handleEvents(events){
+    (events||[]).forEach(function(e){
+      var i=e.input||{}, o=e.output||{};
+      if(o.error){logItem('!', '<b>Validó el pedido</b><small>'+esc(o.error)+'</small>');return;}
+      switch(e.tool){
+        case 'buscar_productos':
+          var n=(o.resultados||[]).length;
+          logItem('⌕','<b>Buscó en el catálogo</b><small>'+esc(i.consulta||i.categoria||'catálogo')+(i.precio_max?' · hasta '+money(i.precio_max):'')+' · '+n+' resultado'+(n===1?'':'s')+'</small>'); break;
+        case 'consultar_disponibilidad':
+          var ex=(o.existencias||[]).map(function(x){return x.talla+' '+x.color+': '+x.unidades+' und.';}).slice(0,4).join(' · ');
+          logItem('▦','<b>Revisó el inventario</b><small>'+esc((o.producto||'')+' — '+ex)+'</small>'); break;
+        case 'cotizar_envio':
+          logItem('➜','<b>Cotizó el envío</b><small>'+esc(o.ciudad)+' · '+(o.envio_gratis?'gratis':money(o.costo_envio))+' · '+esc(o.tiempo_entrega)+' · contraentrega '+(o.contraentrega_disponible?'sí':'no')+'</small>'); break;
+        case 'crear_pedido':
+          orders[o.numero]=o; renderOrder(o);
+          logItem('＋','<b>Creó el pedido #'+esc(o.numero)+'</b><small>'+money(o.total)+' · pendiente de confirmación</small>'); break;
+        case 'confirmar_pedido':
+          if(orders[o.numero]){orders[o.numero].estado=o.estado;renderOrder(orders[o.numero]);}
+          confirmed++; document.getElementById('sOrders').textContent=confirmed;
+          logItem('✓','<b>Pedido #'+esc(o.numero)+' confirmado</b><small>Listo para despacho. Sin llamadas de confirmación.</small>',true);
+          var oc=orders[o.numero]; var card=document.createElement('div'); card.className='order-card';
+          card.innerHTML='<div class="oc-top"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Pedido #'+esc(o.numero)+' confirmado</div>'+
+            '<div class="oc-body">'+(oc?money(oc.total)+' · '+(oc.metodo_pago==='contraentrega'?'Contraentrega':'Link de pago')+'<br>Llega en '+esc(oc.tiempo_entrega):'Listo para despacho')+'</div>';
+          pendingCards.push(card); break;
+        case 'pasar_a_asesor':
+          logItem('☺','<b>Pasó la conversación a un asesor</b><small>'+esc(i.motivo||'')+'</small>'); break;
+      }
+    });
+  }
+
+  async function send(text){
+    text=(text||'').trim(); if(!text||busy) return;
+    busy=true; sendBtn.disabled=true; chips.style.display='none';
+    var mine=bubble(text,'out'); input.value=''; autosize();
+    history.push({role:'user',content:text});
+    var t0=performance.now();
+    await wait(350); typing.classList.add('on'); statusEl.textContent='escribiendo…'; scroll();
+    try{
+      var r=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:history})});
+      var data=await r.json().catch(function(){return {};});
+      if(!r.ok||data.error) throw new Error(data.error||'Error');
+      var secs=(performance.now()-t0)/1000; times.push(secs);
+      var avg=times.reduce(function(a,b){return a+b;},0)/times.length;
+      document.getElementById('sResp').textContent=avg.toFixed(1).replace('.',',')+' s';
+      mine.querySelector('.ticks').classList.add('read');
+      if(data.messages&&data.messages.length) history=history.concat(data.messages); else if(!data.messages) history.push({role:'assistant',content:data.reply||''});
+      handleEvents(data.events);
+      var parts=String(data.reply||'').split(/\n\s*\n/).map(function(s){return s.trim();}).filter(Boolean);
+      if(parts.length>3){parts=[parts.slice(0,parts.length-2).join('\n\n')].concat(parts.slice(-2));}
+      // move order card (if any) after text: render text first
+      typing.classList.remove('on');
+      for(var k=0;k<parts.length;k++){ if(k>0){typing.classList.add('on');scroll();await wait(500);typing.classList.remove('on');} bubble(parts[k],'in'); }
+      while(pendingCards.length){await wait(250);msgs.insertBefore(pendingCards.shift(),typing);scroll();}
+    }catch(e){
+      typing.classList.remove('on'); history.pop();
+      errBubble('No se pudo enviar. Revisa tu conexión e inténtalo de nuevo.');
+    }
+    statusEl.textContent='en línea · atiende Timonel';
+    busy=false; sendBtn.disabled=false; if(window.matchMedia('(min-width: 861px)').matches) input.focus();
+  }
+
+  function autosize(){input.style.height='auto';input.style.height=Math.min(input.scrollHeight,120)+'px';}
+  input.addEventListener('input',autosize);
+  input.addEventListener('keydown',function(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send(input.value);}});
+  form.addEventListener('submit',function(e){e.preventDefault();send(input.value);});
+  document.querySelectorAll('[data-q]').forEach(function(b){b.addEventListener('click',function(){send(b.getAttribute('data-q'));});});
+  document.getElementById('reset').addEventListener('click',function(){location.reload();});
+  function setPanel(open){panel.classList.toggle('open',open);scrim.classList.toggle('on',open);openBtn.setAttribute('aria-expanded',open);}
+  openBtn.addEventListener('click',function(){setPanel(true);});
+  document.getElementById('closePanel').addEventListener('click',function(){setPanel(false);});
+  scrim.addEventListener('click',function(){setPanel(false);});
+
+  // Saludo inicial (no se envía al modelo)
+  setTimeout(function(){bubble('¡Hola! Bienvenido a *Casa Ocre* 👋\nSoy Timonel, el asistente de la tienda. ¿Qué estás buscando hoy?','in');},400);
+})();
+</script>
+</body>
+</html>
