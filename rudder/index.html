@@ -32,12 +32,10 @@ a{color:#0052d4}a:hover{color:#003c9e}
 @keyframes lineup{from{transform:translateY(105%)}to{transform:none}}
 @keyframes curtain{0%{transform:none}100%{transform:translateY(-101%)}}
 @keyframes wordout{0%{opacity:0;letter-spacing:.6em}40%{opacity:1;letter-spacing:.2em}100%{opacity:1}}
-@keyframes float{0%,100%{transform:translateY(0) rotate(-1.5deg)}50%{transform:translateY(-16px) rotate(1.5deg)}}
 .curtain{animation:curtain .9s cubic-bezier(.76,0,.24,1) 1.05s both}
 .curtain-word{animation:wordout 1s ease both}
 .ln{animation:lineup 1s cubic-bezier(.2,.8,.2,1) both}
 .ln1{animation-delay:1.55s}.ln2{animation-delay:1.68s}.ln3{animation-delay:1.81s}
-.ruddy{animation:float 5s ease-in-out infinite}
 .stack{position:sticky}
 .reveal{animation:rise linear both;animation-timeline:view();animation-range:entry 0% cover 28%}
 .m1{animation:msg .6s cubic-bezier(.2,.7,.2,1) .6s both}
@@ -52,7 +50,44 @@ details summary{cursor:pointer;list-style:none}
 details summary::-webkit-details-marker{display:none}
 details[open] .faq-x{transform:rotate(45deg)}
 .faq-x{transition:transform .3s ease}
-@media (prefers-reduced-motion: reduce){.reveal,.m1,.m2,.m3,.m4,.m5,.track,.live,.ln,.ruddy,.curtain-word{animation:none !important}.curtain{display:none}}
+.fade-in{animation:rise .9s cubic-bezier(.2,.8,.2,1) 2.05s both}
+.quiet-link{border-bottom:1px solid rgba(255,255,255,.35);padding:6px 0;transition:border-color .2s}
+.quiet-link:hover{color:#ffffff;border-color:#ffffff}
+.btn-line:hover{border-color:#ffffff !important}
+@media (max-width: 860px){
+.nav-links{display:none !important}
+}
+@media (max-width: 640px){
+.wrap{padding-left:20px !important;padding-right:20px !important}
+.sec{padding-top:80px !important;padding-bottom:80px !important;gap:40px !important}
+#inicio{min-height:100svh !important}
+.hero-body{padding-bottom:40px !important;gap:24px !important}
+.hero-body p{font-size:17px !important}
+.hero-ctas{flex-direction:column;align-items:stretch !important}
+.hero-ctas .btn{width:100%}
+.quiet-link{align-self:center}
+.brand-word{display:none}
+nav .btn-line{font-size:13px;padding:0 14px !important;min-height:40px !important}
+.track{font-size:22px !important;padding:14px 0 !important;gap:28px !important}
+.stat{min-width:0 !important;font-size:64px !important}
+.chat-col{position:static !important}
+.stack{position:relative !important;top:auto !important;min-height:0 !important;padding:28px 24px !important;gap:16px !important}
+.stack span:first-child{font-size:72px !important}
+.pilot-a{border-right:none !important;border-bottom:2px solid #0a0a0a;padding:28px 22px !important}
+.pilot-b{padding:28px 22px !important}
+.cta-btn{width:100%;justify-content:center}
+.row-cap{gap:18px !important}
+.row-cap h3{font-size:22px !important}
+details summary{font-size:18px !important}
+.cmp table{min-width:0 !important;font-size:12.5px !important;table-layout:fixed}
+.cmp caption{font-size:22px !important}
+.cmp th,.cmp td{padding:12px 4px !important;line-height:1.35;hyphens:auto;-webkit-hyphens:auto}
+.cmp thead th{font-size:10px !important;letter-spacing:.06em !important}
+.cmp tbody th,.cmp thead th:first-child{width:28%}
+.foot-brand{flex-wrap:wrap}
+.foot-tag{flex-basis:100%;margin-top:4px}
+}
+@media (prefers-reduced-motion: reduce){.reveal,.m1,.m2,.m3,.m4,.m5,.track,.live,.ln,.fade-in,.curtain-word{animation:none !important}.curtain{display:none}}
 @supports not (animation-timeline: view()){.reveal{animation:none}}
 </style>
 </head>
@@ -65,33 +100,32 @@ details[open] .faq-x{transform:rotate(45deg)}
 <span class="curtain-word" style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: clamp(28px, 4vw, 56px); letter-spacing: 0.2em; color: #ffffff">RUDDER</span>
 </div>
 <header style="position: relative; z-index: 2">
-<nav aria-label="Principal" style="max-width: 1320px; margin: 0 auto; padding: 22px 32px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap">
-<a href="#inicio" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: #ffffff">
-<img src="/assets/lw.webp" alt="" width="34" height="34" style="display: block; width: 34px; height: 34px">
-<span style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 15px; letter-spacing: 0.16em">RUDDER COMMERCE</span>
+<nav aria-label="Principal" class="wrap" style="max-width: 1320px; margin: 0 auto; padding: 24px 32px; display: flex; align-items: center; justify-content: space-between; gap: 20px">
+<a href="#inicio" aria-label="Rudder Commerce, inicio" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: #ffffff">
+<img src="/assets/lw.webp" alt="" width="32" height="32" style="display: block; width: 32px; height: 32px">
+<span class="brand-word" style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 14px; letter-spacing: 0.16em">RUDDER COMMERCE</span>
 </a>
-<div style="display: flex; align-items: center; gap: 30px; flex-wrap: wrap; font-size: 14px; font-weight: 500">
-<a class="nav-a" href="#timonel">Timonel</a>
-<a class="nav-a" href="#calculadora">Calculadora</a>
+<div style="display: flex; align-items: center; gap: 32px; font-size: 14px; font-weight: 500">
+<div class="nav-links" style="display: flex; align-items: center; gap: 32px">
+<a class="nav-a" href="#timonel">Cómo funciona</a>
 <a class="nav-a" href="#piloto">Piloto</a>
 <a class="nav-a" href="#preguntas">Preguntas</a>
-<a class="btn btn-line" href="https://cal.com/rudder-commerce-izsvx2/diagnostico" style="color: #ffffff; text-decoration: none; padding: 11px 18px; border: 1px solid #ffffff; font-weight: 600; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center">Agendar diagnóstico</a>
+</div>
+<a class="btn btn-line" href="https://cal.com/rudder-commerce-izsvx2/diagnostico" style="color: #ffffff; text-decoration: none; padding: 0 18px; border: 1px solid rgba(255,255,255,.45); font-weight: 600; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center; white-space: nowrap">Agendar diagnóstico</a>
 </div>
 </nav>
 </header>
-<div style="position: relative; z-index: 1; flex: 1; max-width: 1320px; width: 100%; margin: 0 auto; padding: 40px 32px 0; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between; gap: 48px; pointer-events: none">
-<span aria-hidden="true"></span>
-<h1 style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: clamp(48px, 8.6vw, 132px); line-height: 0.95; letter-spacing: -0.045em; max-width: 1100px">
+<div class="wrap hero-body" style="position: relative; z-index: 1; flex: 1; max-width: 1320px; width: 100%; margin: 0 auto; padding: 0 32px 72px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: flex-end; gap: 36px; pointer-events: none">
+<h1 style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: clamp(46px, 8.6vw, 132px); line-height: 0.95; letter-spacing: -0.045em; max-width: 1100px">
 <span style="display: block; overflow: hidden; padding-bottom: 0.04em"><span class="ln ln1" style="display: block">Tu WhatsApp</span></span>
 <span style="display: block; overflow: hidden; padding-bottom: 0.04em"><span class="ln ln2" style="display: block">vende a las</span></span>
 <span style="display: block; overflow: hidden; padding-bottom: 0.04em"><span class="ln ln3" style="display: block; color: #0052d4">10:40 p. m.</span></span>
 </h1>
-<div style="display: flex; flex-wrap: wrap; gap: 32px; justify-content: space-between; align-items: flex-end; border-top: 1px solid #2a2f38; padding: 28px 0 40px; pointer-events: auto">
-<p style="margin: 0; max-width: 520px; font-size: 19px; line-height: 1.6; color: #c7cdd8; text-wrap: pretty">Aunque tu equipo esté dormido. Instalamos un agente de IA conectado a tu tienda que responde en segundos, cierra la venta y confirma cada pedido contraentrega. Sin contratar más personal.</p>
-<div style="display: flex; flex-wrap: wrap; gap: 12px">
-<a class="btn btn-blue" href="#agendar" style="background: #0052d4; color: #ffffff; text-decoration: none; padding: 18px 28px; font-weight: 600; font-size: 17px; min-height: 56px; box-sizing: border-box; display: inline-flex; align-items: center; gap: 12px">Agenda tu diagnóstico
+<p class="fade-in" style="margin: 0; max-width: 500px; font-size: 19px; line-height: 1.6; color: #b8bfcc; text-wrap: pretty">Un agente de IA conectado a tu tienda responde en segundos, cierra la venta y confirma cada pedido contraentrega. Aunque tu equipo esté dormido.</p>
+<div class="fade-in hero-ctas" style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px 28px; pointer-events: auto">
+<a class="btn btn-blue" href="https://cal.com/rudder-commerce-izsvx2/diagnostico" style="background: #0052d4; color: #ffffff; text-decoration: none; padding: 0 28px; font-weight: 600; font-size: 17px; min-height: 56px; box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center; gap: 12px">Agenda tu diagnóstico
 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
-</div>
+<a class="quiet-link" href="#timonel" style="color: #ffffff; font-weight: 600; font-size: 16px; text-decoration: none">Ver cómo funciona ↓</a>
 </div>
 </div>
 </section>
@@ -104,27 +138,27 @@ details[open] .faq-x{transform:rotate(45deg)}
 </div>
 <!-- ================= PROBLEM ================= -->
 <section style="background: #ffffff">
-<div style="max-width: 1320px; margin: 0 auto; padding: 128px 32px; display: flex; flex-direction: column; gap: 72px">
+<div class="wrap sec" style="max-width: 1320px; margin: 0 auto; padding: 128px 32px; display: flex; flex-direction: column; gap: 72px">
 <div class="reveal" style="display: flex; flex-wrap: wrap; gap: 32px; justify-content: space-between; align-items: flex-end">
 <h2 style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: clamp(36px, 5vw, 72px); line-height: 0.98; letter-spacing: -0.035em; max-width: 860px">Cada mensaje sin responder es una venta para otra marca.</h2>
 </div>
 <div style="display: flex; flex-direction: column; border-top: 2px solid #0a0a0a">
 <div class="reveal" style="display: flex; flex-wrap: wrap; gap: 24px 48px; align-items: baseline; padding: 40px 0; border-bottom: 1px solid #d9dee7">
-<span style="flex: 0 0 auto; min-width: 280px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: clamp(64px, 9vw, 128px); line-height: 0.9; letter-spacing: -0.05em">94%</span>
+<span class="stat" style="flex: 0 0 auto; min-width: 280px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: clamp(64px, 9vw, 128px); line-height: 0.9; letter-spacing: -0.05em">94%</span>
 <div style="flex: 1 1 360px; display: flex; flex-direction: column; gap: 10px">
 <p style="margin: 0; font-size: 22px; line-height: 1.45; font-weight: 500; text-wrap: pretty">de las personas con internet en Colombia usan WhatsApp. Ahí es donde tu cliente pregunta, decide y compra.</p>
 <p style="margin: 0; font-size: 13px; color: #5b6472">We Are Social y Meltwater, Digital Report 2025</p>
 </div>
 </div>
 <div class="reveal" style="display: flex; flex-wrap: wrap; gap: 24px 48px; align-items: baseline; padding: 40px 0; border-bottom: 1px solid #d9dee7">
-<span style="flex: 0 0 auto; min-width: 280px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: clamp(64px, 9vw, 128px); line-height: 0.9; letter-spacing: -0.05em">1 de 5</span>
+<span class="stat" style="flex: 0 0 auto; min-width: 280px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: clamp(64px, 9vw, 128px); line-height: 0.9; letter-spacing: -0.05em">1 de 5</span>
 <div style="flex: 1 1 360px; display: flex; flex-direction: column; gap: 10px">
 <p style="margin: 0; font-size: 22px; line-height: 1.45; font-weight: 500; text-wrap: pretty">pedidos contraentrega suele volver sin pagar. Es un flete perdido, inventario quieto y una venta que no fue.</p>
 <p style="margin: 0; font-size: 13px; color: #5b6472">Operadores de contraentrega en Colombia reportan entre 15% y 25% de devoluciones</p>
 </div>
 </div>
 <div class="reveal" style="display: flex; flex-wrap: wrap; gap: 24px 48px; align-items: baseline; padding: 40px 0; border-bottom: 1px solid #d9dee7">
-<span style="flex: 0 0 auto; min-width: 280px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: clamp(64px, 9vw, 128px); line-height: 0.9; letter-spacing: -0.05em; color: #0052d4">+23%</span>
+<span class="stat" style="flex: 0 0 auto; min-width: 280px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: clamp(64px, 9vw, 128px); line-height: 0.9; letter-spacing: -0.05em; color: #0052d4">+23%</span>
 <div style="flex: 1 1 360px; display: flex; flex-direction: column; gap: 10px">
 <p style="margin: 0; font-size: 22px; line-height: 1.45; font-weight: 500; text-wrap: pretty">subió el salario mínimo en 2026. Un asesor más ya cuesta $2.000.000 al mes antes de prestaciones, y trabaja 42 horas a la semana.</p>
 <p style="margin: 0; font-size: 13px; color: #5b6472">Decreto 1469 de 2025</p>
@@ -135,7 +169,7 @@ details[open] .faq-x{transform:rotate(45deg)}
 </section>
 <!-- ================= TIMONEL: CHAT + CAPABILITIES ================= -->
 <section id="timonel" style="background: #0a0a0a; color: #ffffff">
-<div style="max-width: 1320px; margin: 0 auto; padding: 128px 32px; display: flex; flex-wrap: wrap; gap: 72px; align-items: flex-start">
+<div class="wrap sec" style="max-width: 1320px; margin: 0 auto; padding: 128px 32px; display: flex; flex-wrap: wrap; gap: 72px; align-items: flex-start">
 <div style="flex: 1 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 48px">
 <div class="reveal" style="display: flex; flex-direction: column; gap: 22px">
 <p style="margin: 0; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #8a93a3">Sistema Timonel</p>
@@ -160,17 +194,17 @@ details[open] .faq-x{transform:rotate(45deg)}
 </li>
 </ol>
 </div>
-<div style="flex: 1 1 400px; min-width: 0; position: sticky; top: 40px; display: flex; flex-direction: column; gap: 14px">
+<div class="chat-col" style="flex: 1 1 400px; min-width: 0; position: sticky; top: 40px; display: flex; flex-direction: column; gap: 14px">
 <div role="img" aria-label="Ejemplo: un cliente pregunta a las 10:40 p. m. por una talla y el agente responde al instante y confirma el pedido contraentrega" style="background: #ffffff; color: #0a0a0a; border-radius: 4px; overflow: hidden">
 <div style="display: flex; align-items: center; gap: 12px; padding: 16px 18px; border-bottom: 1px solid #e3e7ee">
 <div style="width: 36px; height: 36px; border-radius: 50%; background: #0a0a0a; color: #ffffff; display: flex; align-items: center; justify-content: center; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 12px">TM</div>
 <div style="display: flex; flex-direction: column; gap: 2px"><span style="font-weight: 600; font-size: 15px">Tu Marca</span><span style="font-size: 12px; color: #5b6472">Agente Timonel</span></div>
 </div>
 <div style="background: #f3f5f9; padding: 22px 16px; display: flex; flex-direction: column; gap: 12px; font-size: 14.5px; line-height: 1.5; min-height: 380px">
-<div class="m1" style="align-self: flex-end; max-width: 82%; background: #0a0a0a; color: #ffffff; padding: 10px 14px; border-radius: 12px 12px 2px 12px">Hola, ¿la chaqueta negra tiene talla M? ¿Hacen envíos contraentrega a Chía?<span style="display: block; text-align: right; font-size: 11px; color: #b8bfcc; margin-top: 4px">10:40 p. m.</span></div>
-<div class="m2" style="align-self: flex-start; max-width: 86%; background: #ffffff; padding: 10px 14px; border-radius: 12px 12px 12px 2px">¡Hola! Sí, nos quedan 3 en talla M. Cuesta $189.900 y llega a Chía en 2 a 3 días hábiles, pagando contraentrega. ¿Te la separo?<span style="display: block; text-align: right; font-size: 11px; color: #5b6472; margin-top: 4px">10:40 p. m.</span></div>
+<div class="m1" style="align-self: flex-end; max-width: 82%; background: #0a0a0a; color: #ffffff; padding: 10px 14px; border-radius: 12px 12px 2px 12px">Hola, ¿la chaqueta negra tiene talla M? ¿Hacen envíos contraentrega a Bogotá?<span style="display: block; text-align: right; font-size: 11px; color: #b8bfcc; margin-top: 4px">10:40 p. m.</span></div>
+<div class="m2" style="align-self: flex-start; max-width: 86%; background: #ffffff; padding: 10px 14px; border-radius: 12px 12px 12px 2px">¡Hola! Sí, nos quedan 3 en talla M. Cuesta $189.900 y llega a Bogotá en 2 a 3 días hábiles, pagando contraentrega. ¿Te la separo?<span style="display: block; text-align: right; font-size: 11px; color: #5b6472; margin-top: 4px">10:40 p. m.</span></div>
 <div class="m3" style="align-self: flex-end; max-width: 82%; background: #0a0a0a; color: #ffffff; padding: 10px 14px; border-radius: 12px 12px 2px 12px">Sí, porfa<span style="display: block; text-align: right; font-size: 11px; color: #b8bfcc; margin-top: 4px">10:41 p. m.</span></div>
-<div class="m4" style="align-self: flex-start; max-width: 86%; background: #ffffff; padding: 10px 14px; border-radius: 12px 12px 12px 2px">Listo. Te confirmo: chaqueta negra talla M, envío a Chía, pago contraentrega. ¿Todo correcto?<span style="display: block; text-align: right; font-size: 11px; color: #5b6472; margin-top: 4px">10:41 p. m.</span></div>
+<div class="m4" style="align-self: flex-start; max-width: 86%; background: #ffffff; padding: 10px 14px; border-radius: 12px 12px 12px 2px">Listo. Te confirmo: chaqueta negra talla M, envío a Bogotá, pago contraentrega. ¿Todo correcto?<span style="display: block; text-align: right; font-size: 11px; color: #5b6472; margin-top: 4px">10:41 p. m.</span></div>
 <div class="m5" style="display: flex; align-items: center; gap: 12px; background: #0052d4; color: #ffffff; padding: 14px 16px; border-radius: 2px; margin-top: 4px">
 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
 <div style="display: flex; flex-direction: column; gap: 2px"><span style="font-weight: 600; font-size: 14px">Pedido #1043 confirmado</span><span style="font-size: 12.5px; color: #dbe6fb">Contraentrega · listo para despacho</span></div>
@@ -182,7 +216,7 @@ details[open] .faq-x{transform:rotate(45deg)}
 </section>
 <!-- ================= PROCESS ================= -->
 <section style="background: #ffffff">
-<div style="max-width: 1320px; margin: 0 auto; padding: 128px 32px; display: flex; flex-direction: column; gap: 64px">
+<div class="wrap sec" style="max-width: 1320px; margin: 0 auto; padding: 128px 32px; display: flex; flex-direction: column; gap: 64px">
 <h2 class="reveal" style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: clamp(36px, 5vw, 72px); line-height: 0.98; letter-spacing: -0.035em; max-width: 900px">De tu WhatsApp de hoy a uno que vende solo, en cuatro semanas.</h2>
 <ol style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 24px">
 <li class="stack" style="top: 32px; background: #ffffff; border: 2px solid #0a0a0a; min-height: 300px; padding: 44px; box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 24px 64px; align-items: flex-start">
@@ -211,7 +245,7 @@ details[open] .faq-x{transform:rotate(45deg)}
 </li>
 </ol>
 <!-- comparison -->
-<div class="reveal" style="overflow-x: auto; border-top: 2px solid #0a0a0a">
+<div class="reveal cmp" style="overflow-x: auto; border-top: 2px solid #0a0a0a">
 <table style="width: 100%; min-width: 720px; border-collapse: collapse; font-size: 17px">
 <caption style="text-align: left; padding: 28px 0 8px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 28px; letter-spacing: -0.02em">Compara antes de decidir</caption>
 <thead>
@@ -235,7 +269,7 @@ details[open] .faq-x{transform:rotate(45deg)}
 </section>
 <!-- ================= CALCULATOR ================= -->
 <section id="calculadora" style="background: #0a0a0a; color: #ffffff">
-<div style="max-width: 1320px; margin: 0 auto; padding: 128px 32px; display: flex; flex-direction: column; gap: 56px">
+<div class="wrap sec" style="max-width: 1320px; margin: 0 auto; padding: 128px 32px; display: flex; flex-direction: column; gap: 56px">
 <div class="reveal" style="display: flex; flex-wrap: wrap; gap: 24px; justify-content: space-between; align-items: flex-end">
 <h2 style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: clamp(36px, 5vw, 72px); line-height: 0.98; letter-spacing: -0.035em; max-width: 820px">¿Cuánto se te devuelve cada mes?</h2>
 <p style="margin: 0; max-width: 360px; font-size: 16px; line-height: 1.6; color: #b8bfcc">Mueve los controles con los números de tu tienda. Es una estimación; en el diagnóstico la hacemos con tus datos reales.</p>
@@ -272,13 +306,13 @@ details[open] .faq-x{transform:rotate(45deg)}
 </section>
 <!-- ================= PILOT ================= -->
 <section id="piloto" style="background: #ffffff">
-<div style="max-width: 1320px; margin: 0 auto; padding: 128px 32px; display: flex; flex-direction: column; gap: 56px">
+<div class="wrap sec" style="max-width: 1320px; margin: 0 auto; padding: 128px 32px; display: flex; flex-direction: column; gap: 56px">
 <div class="reveal" style="display: flex; flex-wrap: wrap; gap: 24px; justify-content: space-between; align-items: flex-end">
 <h2 style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: clamp(36px, 5vw, 72px); line-height: 0.98; letter-spacing: -0.035em; max-width: 900px">Pruébalo a mitad de precio. Si no funciona, te devolvemos el anticipo.</h2>
 <p style="margin: 0; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #0052d4; font-weight: 600">Piloto Fundador · 3 cupos</p>
 </div>
 <div class="reveal" style="display: flex; flex-wrap: wrap; border: 2px solid #0a0a0a">
-<div style="flex: 1 1 440px; min-width: 0; padding: 44px; display: flex; flex-direction: column; gap: 22px; border-right: 2px solid #0a0a0a">
+<div style="flex: 1 1 440px; min-width: 0; padding: 44px; display: flex; flex-direction: column; gap: 22px; border-right: 2px solid #0a0a0a" class="pilot-a">
 <span style="font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #5b6472">Implementación de Timonel</span>
 <div style="display: flex; align-items: baseline; gap: 18px; flex-wrap: wrap">
 <span style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: clamp(52px, 6vw, 84px); line-height: 1; letter-spacing: -0.045em">$3.250.000</span>
@@ -286,9 +320,9 @@ details[open] .faq-x{transform:rotate(45deg)}
 </div>
 <p style="margin: 0; font-size: 17px; line-height: 1.6; color: #3c4350">Luego <strong style="color: #0a0a0a">$750.000 al mes</strong> los primeros 3 meses; después, $1.500.000. Pagas 50% al empezar y 50% cuando el agente esté en marcha.</p>
 <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #3c4350; border-top: 1px solid #d9dee7; padding-top: 20px">Solo hay tres cupos porque cada implementación la acompañamos de principio a fin. A cambio del descuento, medimos los resultados contigo y, si te funciona, publicamos el caso.</p>
-<a class="btn btn-dark" href="#agendar" style="align-self: flex-start; background: #0a0a0a; color: #ffffff; text-decoration: none; padding: 18px 28px; font-weight: 600; font-size: 17px; min-height: 56px; box-sizing: border-box; display: inline-flex; align-items: center">Quiero uno de los 3 cupos</a>
+<a class="btn btn-dark cta-btn" href="#agendar" style="align-self: flex-start; background: #0a0a0a; color: #ffffff; text-decoration: none; padding: 18px 28px; font-weight: 600; font-size: 17px; min-height: 56px; box-sizing: border-box; display: inline-flex; align-items: center">Quiero uno de los 3 cupos</a>
 </div>
-<div style="flex: 1 1 380px; min-width: 0; padding: 44px; display: flex; flex-direction: column; gap: 0">
+<div class="pilot-b" style="flex: 1 1 380px; min-width: 0; padding: 44px; display: flex; flex-direction: column; gap: 0">
 <span style="font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #5b6472; padding-bottom: 12px">Incluye</span>
 <ul style="margin: 0; padding: 0; list-style: none; font-size: 17px; line-height: 1.5">
 <li style="padding: 16px 0; border-bottom: 1px solid #d9dee7">Agente conectado a tu tienda y a tu WhatsApp</li>
@@ -304,7 +338,7 @@ details[open] .faq-x{transform:rotate(45deg)}
 </section>
 <!-- ================= FAQ ================= -->
 <section id="preguntas" style="background: #ffffff">
-<div style="max-width: 1320px; margin: 0 auto; padding: 128px 32px; display: flex; flex-wrap: wrap; gap: 64px">
+<div class="wrap sec" style="max-width: 1320px; margin: 0 auto; padding: 128px 32px; display: flex; flex-wrap: wrap; gap: 64px">
 <h2 class="reveal" style="flex: 1 1 320px; margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: clamp(36px, 4.4vw, 64px); line-height: 0.98; letter-spacing: -0.035em">Preguntas antes de decidir</h2>
 <div style="flex: 2 1 560px; min-width: 0; border-top: 2px solid #0a0a0a">
 <details style="border-bottom: 1px solid #d9dee7">
@@ -336,30 +370,26 @@ details[open] .faq-x{transform:rotate(45deg)}
 </section>
 <!-- ================= FINAL CTA ================= -->
 <section id="agendar" style="background: #0052d4; color: #ffffff; overflow: hidden">
-<div style="max-width: 1320px; margin: 0 auto; padding: 120px 32px 0; display: flex; flex-wrap: wrap; gap: 32px 48px; align-items: flex-end">
-<div style="flex: 1 1 620px; min-width: 0; display: flex; flex-direction: column; gap: 40px; padding-bottom: 120px">
+<div class="wrap sec" style="max-width: 1320px; margin: 0 auto; padding: 128px 32px; display: flex; flex-wrap: wrap; gap: 32px 48px; align-items: flex-end">
+<div style="flex: 1 1 620px; min-width: 0; display: flex; flex-direction: column; gap: 40px">
 <h2 class="reveal" style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: clamp(56px, 9.5vw, 156px); line-height: 0.88; letter-spacing: -0.055em">Toma el timón.</h2>
 <div class="reveal" style="display: flex; flex-direction: column; gap: 28px; border-top: 1px solid #ffffff; padding-top: 32px">
 <p style="margin: 0; max-width: 560px; font-size: 20px; line-height: 1.55; color: #ffffff">20 minutos por videollamada. Revisamos tu WhatsApp, hacemos la cuenta con tus números y te mostramos el agente funcionando. Sin compromiso.</p>
 <div style="display: flex; flex-wrap: wrap; gap: 16px 24px; align-items: center">
-<a class="btn btn-white" href="https://cal.com/rudder-commerce-izsvx2/diagnostico" style="background: #ffffff; color: #0a0a0a; text-decoration: none; padding: 20px 32px; font-weight: 700; font-size: 18px; min-height: 60px; box-sizing: border-box; display: inline-flex; align-items: center; gap: 12px">Agendar mi diagnóstico
+<a class="btn btn-white cta-btn" href="https://cal.com/rudder-commerce-izsvx2/diagnostico" style="background: #ffffff; color: #0a0a0a; text-decoration: none; padding: 20px 32px; font-weight: 700; font-size: 18px; min-height: 60px; box-sizing: border-box; display: inline-flex; align-items: center; gap: 12px">Agendar mi diagnóstico
 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
 <span style="font-size: 15px; color: #dbe6fb">Quedan 3 cupos de Piloto Fundador este mes</span>
 </div>
 </div>
 </div>
-<div style="flex: 0 1 400px; min-width: 240px; display: flex; flex-direction: column; align-items: center; gap: 0">
-<p class="reveal" style="margin: 0 0 18px; align-self: flex-start; background: #ffffff; color: #0a0a0a; padding: 14px 18px; font-size: 16px; font-weight: 600; line-height: 1.4; max-width: 260px; border-radius: 14px 14px 14px 2px">¡Hola! Soy Ruddy. Te espero en el diagnóstico.</p>
-<img class="ruddy" src="/assets/ruddy.webp" alt="Ruddy, el pingüino capitán de Rudder Commerce, saludando" style="width: 100%; max-width: 360px; height: auto; display: block; margin-bottom: -6px">
-</div>
 </div>
 </section>
 <!-- ================= FOOTER ================= -->
 <footer style="background: #0a0a0a; color: #b8bfcc">
-<div style="max-width: 1320px; margin: 0 auto; padding: 48px 32px; display: flex; flex-wrap: wrap; gap: 24px; justify-content: space-between; align-items: center; font-size: 14px">
-<span style="display: inline-flex; align-items: center; gap: 12px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; color: #ffffff; letter-spacing: 0.16em"><img src="/assets/lw.webp" alt="" width="28" height="28" style="display: block; width: 28px; height: 28px">RUDDER COMMERCE <span style="font-weight: 500; letter-spacing: 0; color: #8a93a3">· Direction for Scale.</span></span>
+<div class="wrap" style="max-width: 1320px; margin: 0 auto; padding: 48px 32px; display: flex; flex-wrap: wrap; gap: 24px; justify-content: space-between; align-items: center; font-size: 14px">
+<span class="foot-brand" style="display: inline-flex; align-items: center; gap: 12px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; color: #ffffff; letter-spacing: 0.16em"><img src="/assets/lw.webp" alt="" width="28" height="28" style="display: block; width: 28px; height: 28px">RUDDER COMMERCE <span class="foot-tag" style="font-weight: 500; letter-spacing: 0; color: #8a93a3">Direction for Scale.</span></span>
 <div style="display: flex; flex-wrap: wrap; gap: 22px">
-<a href="mailto:johangordillo@ruddercommerce.com" style="color: #b8bfcc">johangordillo@ruddercommerce.com</a>
+<a href="mailto:soporte@ruddercommerce.com" style="color: #b8bfcc">soporte@ruddercommerce.com</a>
 <a href="/privacidad" style="color: #b8bfcc">Política de privacidad</a>
 </div>
 </div>
@@ -453,8 +483,9 @@ var w = canvas.clientWidth || 1, h = canvas.clientHeight || 1;
 renderer.setSize(w, h, false);
 camera.aspect = w / h; camera.updateProjectionMatrix();
 var narrow = w < 820;
-wheel.position.set(narrow ? 0 : 2.6, narrow ? 0.6 : 0.2, 0);
-wheel.scale.setScalar(narrow ? 0.8 : 1.15);
+var ar = w / h, halfH = 11 * Math.tan(17.5 * Math.PI / 180), halfW = halfH * ar;
+if (narrow) { wheel.position.set(halfW * 0.6, halfH * 0.36, 0); wheel.scale.setScalar(Math.min(0.5, halfW * 0.36)); }
+else { wheel.position.set(Math.max(2.6, halfW * 0.68), -0.15, 0); wheel.scale.setScalar(Math.min(1.05, halfH * 0.3)); }
 };
 ctx.ro = new ResizeObserver(layout); ctx.ro.observe(canvas); layout();
 var self = ctx, t0 = performance.now();
