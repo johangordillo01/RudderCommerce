@@ -2,15 +2,7 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
-    {
-      "source": "/",
-      "has": [
-        {
-          "type": "host",
-          "value": "johan.ruddercommerce.com"
-        }
-      ],
-      "destination": "/johan"
-    }
+    { "source": "/", "has": [{ "type": "host", "value": "johan.ruddercommerce.com" }], "destination": "/johan" },
+    { "source": "/", "destination": "/rudder" }
   ]
 }
