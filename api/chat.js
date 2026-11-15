@@ -3,6 +3,7 @@ import { z } from 'zod';
 import { TIENDA, POLITICAS, PRODUCTOS, buscar, resumen, porId, cotizarEnvio, norm } from '../lib/tienda.js';
 
 const MODEL = process.env.AI_GATEWAY_MODEL || 'anthropic/claude-haiku-5.5';
+const FALLBACKS = (process.env.AI_GATEWAY_FALLBACKS || '').split(',').map((x) => x.trim()).filter(Boolean);
 const MAX_TURNOS = 30;
 const MAX_CHARS = 700;
 
@@ -155,6 +156,8 @@ export async function POST(request) {
       stopWhen: isStepCount(6),
       maxOutputTokens: 700,
       temperature: 0.4,
+      maxRetries: 1,
+      providerOptions: FALLBACKS.length ? { gateway: { models: FALLBACKS } } : undefined,
     });
     const events = [];
     for (const step of result.steps) {
