@@ -118,7 +118,7 @@ details summary{font-size:17px !important;padding:20px 0 !important}
 @keyframes spin{to{transform:rotate(360deg)}}
 @media (max-width: 819px){
 #scene{display:none !important}
-.wheel-m{display:block;position:absolute;z-index:0;top:80px;right:-16vw;width:min(92vw,40svh);height:auto;pointer-events:none;will-change:transform;animation:spin 60s linear infinite}
+.wheel-m{display:block;position:absolute;z-index:0;top:80px;right:-16vw;width:min(92vw,40svh);height:auto;pointer-events:none;will-change:transform;animation:spin 140s linear infinite}
 #inicio{min-height:calc(100vh + 80px) !important;min-height:calc(100lvh + 80px) !important}
 .hero-body{padding-bottom:120px !important}
 .hero-body h1{letter-spacing:-0.03em !important}
@@ -163,6 +163,13 @@ nav.wrap{padding-top:calc(24px + env(safe-area-inset-top)) !important}
 @media (prefers-reduced-motion: reduce){.reveal,.m1,.m2,.m3,.m4,.m5,.track,.live,.ln,.fade-in,.curtain-word{animation:none !important}.curtain{display:none}}
 @supports not (animation-timeline: view()){.reveal{animation:none}}
 </style>
+<script>
+if('scrollRestoration' in history)history.scrollRestoration='manual';
+if(location.hash)history.replaceState(null,'',location.pathname+location.search);
+window.scrollTo(0,0);
+window.addEventListener('load',function(){window.scrollTo(0,0);});
+window.addEventListener('pageshow',function(e){if(e.persisted)window.scrollTo(0,0);});
+</script>
 </head>
 <body>
 <div style="font-family: Inter, -apple-system, 'Segoe UI', Roboto, sans-serif; color: #0a0a0a; background: #ffffff; -webkit-font-smoothing: antialiased">
@@ -489,8 +496,9 @@ if(document.readyState==='complete') go(); else window.addEventListener('load',g
 </script>
 <script>
 (function(){if(window.innerWidth>=820||(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches))return;
-var r=document.documentElement,t=false;function u(){t=false;var y=window.scrollY||0;if(y<1200)r.style.setProperty('--rot',(y*0.25).toFixed(1));}
-window.addEventListener('scroll',function(){if(!t){t=true;requestAnimationFrame(u);}},{passive:true});})();
+var r=document.documentElement,cur=0,target=0,run=false;
+function step(){var d=target-cur;cur+=d*0.08;if(Math.abs(d)<0.05){cur=target;run=false;}r.style.setProperty('--rot',cur.toFixed(2));if(run)requestAnimationFrame(step);}
+window.addEventListener('scroll',function(){var y=window.scrollY||0;if(y>1400)return;target=y*0.12;if(!run){run=true;requestAnimationFrame(step);}},{passive:true});})();
 </script>
 </body>
 </html>
