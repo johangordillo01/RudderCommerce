@@ -37,8 +37,8 @@ a{color:#0052d4}a:hover{color:#003c9e}
 @keyframes wordout{0%{opacity:0;letter-spacing:.6em}40%{opacity:1;letter-spacing:.2em}100%{opacity:1}}
 .curtain{animation:curtain .9s cubic-bezier(.76,0,.24,1) 1.05s both}
 .curtain-word{animation:wordout 1s ease both}
-.ln{animation:lineup 1s cubic-bezier(.2,.8,.2,1) both}
-.ln1{animation-delay:.1s}.ln2{animation-delay:.22s}.ln3{animation-delay:.34s}
+.ln{animation:lineup 1.1s cubic-bezier(.16,1,.3,1) both}
+.ln1{animation-delay:.05s}.ln2{animation-delay:.16s}.ln3{animation-delay:.27s}
 .stack{position:sticky}
 .reveal{animation:rise linear both;animation-timeline:view();animation-range:entry 0% cover 28%}
 .m1{animation:msg .6s cubic-bezier(.2,.7,.2,1) .6s both}
@@ -53,7 +53,15 @@ details summary{cursor:pointer;list-style:none}
 details summary::-webkit-details-marker{display:none}
 details[open] .faq-x{transform:rotate(45deg)}
 .faq-x{transition:transform .3s ease}
-.fade-in{animation:rise .9s cubic-bezier(.2,.8,.2,1) .5s both}
+@keyframes softrise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes navin{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
+@keyframes wheelin{from{opacity:0;transform:rotate(-70deg) scale(.82)}to{opacity:1;transform:none}}
+.fade-in{animation:softrise .9s cubic-bezier(.16,1,.3,1) .55s both}
+.hero-body p.fade-in{animation-delay:.5s}.hero-ctas.fade-in{animation-delay:.66s}.chips.fade-in{animation-delay:.82s}
+#inicio header{animation:navin .8s cubic-bezier(.16,1,.3,1) .05s both}
+#scene{opacity:0;transition:opacity 1.4s ease}#scene.on{opacity:1}
+/* no arrancar hasta que las fuentes estén listas (evita el salto de letra) */
+html:not(.ready) .ln,html:not(.ready) .fade-in,html:not(.ready) #inicio header,html:not(.ready) .wheel-m{animation-play-state:paused !important}
 .quiet-link{border-bottom:1px solid rgba(255,255,255,.35);padding:6px 0;transition:border-color .2s}
 .quiet-link:hover{color:#ffffff;border-color:#ffffff}
 .btn-line:hover{border-color:#ffffff !important}
@@ -118,7 +126,7 @@ details summary{font-size:17px !important;padding:20px 0 !important}
 @keyframes spin{to{transform:rotate(360deg)}}
 @media (max-width: 819px){
 #scene{display:none !important}
-.wheel-m{display:block;position:absolute;z-index:0;top:80px;right:-16vw;width:min(92vw,40svh);height:auto;pointer-events:none;will-change:transform;animation:spin 140s linear infinite}
+.wheel-m{display:block;position:absolute;z-index:0;top:80px;right:-16vw;width:min(92vw,40svh);height:auto;pointer-events:none;will-change:transform;animation:wheelin 1.6s cubic-bezier(.16,1,.3,1) .2s both, spin 140s linear 1.8s infinite}
 #inicio{min-height:calc(100vh + 80px) !important;min-height:calc(100lvh + 80px) !important}
 .hero-body{padding-bottom:120px !important}
 .hero-body h1{letter-spacing:-0.03em !important}
@@ -160,7 +168,7 @@ nav.wrap{padding-top:calc(24px + env(safe-area-inset-top)) !important}
 .hero-ctas .quiet-link{display:none}
 .norisk li{font-size:14px;padding:9px 14px}
 }
-@media (prefers-reduced-motion: reduce){.reveal,.m1,.m2,.m3,.m4,.m5,.track,.live,.ln,.fade-in,.curtain-word{animation:none !important}.curtain{display:none}}
+@media (prefers-reduced-motion: reduce){.reveal,.m1,.m2,.m3,.m4,.m5,.track,.live,.ln,.fade-in,.curtain-word,#inicio header{animation:none !important}#scene{opacity:1 !important;transition:none}.curtain{display:none}}
 @supports not (animation-timeline: view()){.reveal{animation:none}}
 </style>
 <script>
@@ -170,6 +178,11 @@ window.scrollTo(0,0);
 window.addEventListener('load',function(){window.scrollTo(0,0);});
 window.addEventListener('pageshow',function(e){if(e.persisted)window.scrollTo(0,0);});
 </script>
+<script>
+(function(){var d=document.documentElement,done=false;function go(){if(done)return;done=true;d.classList.add('ready');}
+if(document.fonts&&document.fonts.ready){document.fonts.ready.then(go);}else{go();}setTimeout(go,900);})();
+</script>
+<noscript><style>.ln,.fade-in,#inicio header,.wheel-m{animation:none !important}</style></noscript>
 </head>
 <body>
 <div style="font-family: Inter, -apple-system, 'Segoe UI', Roboto, sans-serif; color: #0a0a0a; background: #ffffff; -webkit-font-smoothing: antialiased">
@@ -460,8 +473,11 @@ var narrow = w < 820;
 var ar = w / h, halfH = 11 * Math.tan(17.5 * Math.PI / 180), halfW = halfH * ar;
 if (narrow) { wheel.position.set(halfW * 0.42, halfH * 0.42, 0); wheel.scale.setScalar(Math.min(0.55, halfW * 0.4)); }
 else { wheel.position.set(Math.max(2.8, halfW * 0.7), -0.35, 0); wheel.scale.setScalar(Math.min(0.85, halfH * 0.24)); }
+ctx.baseScale = wheel.scale.x;
 };
 ctx.ro = new ResizeObserver(layout); ctx.ro.observe(canvas); layout();
+requestAnimationFrame(function(){ canvas.classList.add('on'); });
+var intro0 = performance.now();
 ctx.scrollY = window.scrollY || 0; window.addEventListener('scroll', function () { ctx.scrollY = window.scrollY; }, { passive: true });
 var self = ctx, t0 = performance.now(), visible = true, last = 0, step = 0;
 new IntersectionObserver(function (es) { visible = es[0].isIntersecting; if (visible && !self.raf) self.raf = requestAnimationFrame(tick); }).observe(canvas);
@@ -475,7 +491,9 @@ if (self.nf > 45 && self.ft > 22 && self.pr > 1) { self.pr = Math.max(1, self.pr
 var t = (now - t0) / 1000;
 var scroll = self.scrollY || 0;
 cur.x += (target.x - cur.x) * 0.05; cur.y += (target.y - cur.y) * 0.05;
-wheel.rotation.z = -(scroll * 0.0035) - (reduce ? 0 : t * 0.06);
+var k = Math.min(1, (now - intro0) / 1600); var ease = 1 - Math.pow(1 - k, 4);
+wheel.rotation.z = -(scroll * 0.0035) - (reduce ? 0 : t * 0.06) + (1 - ease) * 1.2;
+wheel.scale.setScalar((self.baseScale || 1) * (0.85 + 0.15 * ease));
 wheel.rotation.y = -0.38 + cur.x * 0.5;
 wheel.rotation.x = 0.12 + cur.y * 0.35;
 camera.position.z = 11 + Math.min(scroll, 900) * 0.004;
