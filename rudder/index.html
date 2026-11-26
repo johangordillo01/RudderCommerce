@@ -76,7 +76,6 @@ nav .btn-line{font-size:13px;padding:0 14px !important;min-height:40px !importan
 .stack span:first-child{font-size:72px !important}
 .pilot-a{border-right:none !important;border-bottom:2px solid #0a0a0a;padding:28px 22px !important}
 .pilot-b{padding:28px 22px !important}
-.price-card{border-right:none !important;border-bottom:2px solid #0a0a0a;padding:28px 22px !important}
 .cta-btn{width:100%;justify-content:center}
 .row-cap{gap:18px !important}
 .row-cap h3{font-size:22px !important}
@@ -88,6 +87,29 @@ details summary{font-size:18px !important}
 .cmp tbody th,.cmp thead th:first-child{width:28%}
 .foot-brand{flex-wrap:wrap}
 .foot-tag{flex-basis:100%;margin-top:4px}
+}
+
+.btn{border-radius:999px !important}
+.card{border-radius:20px;overflow:hidden}
+.badge{display:inline-block;background:#0052d4;color:#fff;border-radius:999px;padding:4px 10px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;vertical-align:middle;margin-left:6px}
+.price-wrap{display:flex;flex-wrap:wrap;gap:16px}
+.price-card{flex:1 1 300px;min-width:0;border-radius:20px}
+.step{display:flex;gap:16px;align-items:baseline}
+@media (max-width: 640px){
+.sec{padding-top:56px !important;padding-bottom:56px !important;gap:28px !important}
+.sec h2{font-size:32px !important;line-height:1.05 !important}
+#inicio{min-height:86svh !important}
+.hero-body{padding-bottom:32px !important;gap:20px !important}
+.hero-body h1{font-size:44px !important}
+.btn,.cta-btn{width:100%;justify-content:center;box-sizing:border-box}
+.price-card{padding:26px 22px !important;gap:14px !important}
+.price-card ul li{padding:10px 0 !important;font-size:15px !important}
+.steps li{padding:18px 0 !important}
+.steps li span{font-size:28px !important}
+.chat-col{gap:10px !important}
+details summary{font-size:17px !important;padding:20px 0 !important}
+#agendar h2{font-size:48px !important}
+.calc-big{font-size:44px !important}
 }
 @media (prefers-reduced-motion: reduce){.reveal,.m1,.m2,.m3,.m4,.m5,.track,.live,.ln,.fade-in,.curtain-word{animation:none !important}.curtain{display:none}}
 @supports not (animation-timeline: view()){.reveal{animation:none}}
@@ -152,12 +174,12 @@ details summary{font-size:18px !important}
 <div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 32px">
 <div style="display: flex; flex-direction: column; gap: 6px">
 <span style="font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #5b6472">Citas perdidas · al mes</span>
-<span style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: clamp(48px, 6vw, 88px); line-height: 1; letter-spacing: -0.04em; font-variant-numeric: tabular-nums">{{perdidaTxt}}</span>
+<span style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: clamp(48px, 6vw, 88px); line-height: 1; letter-spacing: -0.04em; font-variant-numeric: tabular-nums" class="calc-big">{{perdidaTxt}}</span>
 <span style="font-size: 15px; color: #5b6472">{{faltasTxt}} citas a las que nadie llegó</span>
 </div>
 <div style="display: flex; flex-direction: column; gap: 6px; border-top: 1px solid #d9dee7; padding-top: 28px">
 <span style="font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #5b6472">Si recuperan un tercio</span>
-<span style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: clamp(40px, 4.6vw, 64px); line-height: 1; letter-spacing: -0.04em; color: #0052d4; font-variant-numeric: tabular-nums">+{{recuperoTxt}}</span>
+<span style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: clamp(40px, 4.6vw, 64px); line-height: 1; letter-spacing: -0.04em; color: #0052d4; font-variant-numeric: tabular-nums" class="calc-big">+{{recuperoTxt}}</span>
 <span style="font-size: 15px; color: #5b6472">al mes</span>
 <a class="btn btn-dark" href="https://cal.com/rudder-commerce-izsvx2/diagnostico" style="margin-top: 20px; align-self: flex-start; background: #0a0a0a; color: #ffffff; text-decoration: none; padding: 0 24px; font-weight: 600; font-size: 16px; min-height: 52px; display: inline-flex; align-items: center">Quiero dejar de perder esa plata →</a>
 </div>
@@ -180,7 +202,7 @@ details summary{font-size:18px !important}
 </ol>
 </div>
 <div class="chat-col" style="flex: 1 1 400px; min-width: 0; position: sticky; top: 40px; display: flex; flex-direction: column; gap: 14px">
-<div role="img" aria-label="Ejemplo ilustrativo: un paciente escribe a las 10:40 p. m. para pedir una cita de limpieza y el asistente le ofrece horarios y deja la cita agendada" style="background: #ffffff; color: #0a0a0a; border-radius: 4px; overflow: hidden">
+<div role="img" aria-label="Ejemplo ilustrativo: un paciente escribe a las 10:40 p. m. para pedir una cita de limpieza y el asistente le ofrece horarios y deja la cita agendada" style="background: #ffffff; color: #0a0a0a; border-radius: 20px; overflow: hidden">
 <div style="display: flex; align-items: center; gap: 12px; padding: 16px 18px; border-bottom: 1px solid #e3e7ee">
 <div style="width: 36px; height: 36px; border-radius: 50%; background: #0a0a0a; color: #ffffff; display: flex; align-items: center; justify-content: center; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 12px">SC</div>
 <div style="display: flex; flex-direction: column; gap: 2px"><span style="font-weight: 600; font-size: 15px">Su Clínica</span><span style="font-size: 12px; color: #5b6472">Asistente de citas</span></div>
@@ -190,7 +212,7 @@ details summary{font-size:18px !important}
 <div class="m2" style="align-self: flex-start; max-width: 86%; background: #ffffff; padding: 10px 14px; border-radius: 12px 12px 12px 2px">¡Hola! Sí. Tenemos el jueves a las 9:00 a. m. o el viernes a las 4:30 p. m. ¿Cuál le sirve?<span style="display: block; text-align: right; font-size: 11px; color: #5b6472; margin-top: 4px">10:40 p. m.</span></div>
 <div class="m3" style="align-self: flex-end; max-width: 82%; background: #0a0a0a; color: #ffffff; padding: 10px 14px; border-radius: 12px 12px 2px 12px">El viernes, porfa<span style="display: block; text-align: right; font-size: 11px; color: #b8bfcc; margin-top: 4px">10:41 p. m.</span></div>
 <div class="m4" style="align-self: flex-start; max-width: 86%; background: #ffffff; padding: 10px 14px; border-radius: 12px 12px 12px 2px">Listo. Para apartarla, ¿me regala su nombre completo? El jueves le escribo para confirmar.<span style="display: block; text-align: right; font-size: 11px; color: #5b6472; margin-top: 4px">10:41 p. m.</span></div>
-<div class="m5" style="display: flex; align-items: center; gap: 12px; background: #0052d4; color: #ffffff; padding: 14px 16px; border-radius: 2px; margin-top: 4px">
+<div class="m5" style="display: flex; align-items: center; gap: 12px; background: #0052d4; color: #ffffff; padding: 14px 16px; border-radius: 14px; margin-top: 4px">
 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
 <div style="display: flex; flex-direction: column; gap: 2px"><span style="font-weight: 600; font-size: 14px">Cita agendada · viernes 4:30 p. m.</span><span style="font-size: 12.5px; color: #dbe6fb">Recordatorio programado 24 h antes</span></div>
 </div>
@@ -204,7 +226,7 @@ details summary{font-size:18px !important}
 <section id="empezar" style="background: #ffffff">
 <div class="wrap sec" style="max-width: 1320px; margin: 0 auto; padding: 96px 32px 0; display: flex; flex-direction: column; gap: 40px">
 <h2 class="reveal" style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: clamp(36px, 5vw, 72px); line-height: 0.98; letter-spacing: -0.035em; max-width: 900px">No pagan nada hasta ver la muestra.</h2>
-<ol class="reveal" style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; border-top: 2px solid #0a0a0a">
+<ol class="reveal steps" style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; border-top: 2px solid #0a0a0a">
 <li style="flex: 1 1 280px; padding: 28px 28px 28px 0; display: flex; flex-direction: column; gap: 10px"><span style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 44px; color: #0052d4; letter-spacing: -0.04em">1</span><h3 style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 22px">Hablamos 20 minutos</h3><p style="margin: 0; font-size: 17px; line-height: 1.6; color: #3c4350">Por videollamada, a la hora que les quede bien.</p></li>
 <li style="flex: 1 1 280px; padding: 28px 28px 28px 0; display: flex; flex-direction: column; gap: 10px"><span style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 44px; color: #0052d4; letter-spacing: -0.04em">2</span><h3 style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 22px">Les mostramos la muestra gratis</h3><p style="margin: 0; font-size: 17px; line-height: 1.6; color: #3c4350">Si no les gusta, ahí termina todo, sin costo.</p></li>
 <li style="flex: 1 1 280px; padding: 28px 0; display: flex; flex-direction: column; gap: 10px"><span style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 44px; color: #0052d4; letter-spacing: -0.04em">3</span><h3 style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 22px">Lo instalamos y ustedes aprueban</h3><p style="margin: 0; font-size: 17px; line-height: 1.6; color: #3c4350">El último pago va solo cuando aprueben que funciona.</p></li>
@@ -218,8 +240,8 @@ details summary{font-size:18px !important}
 <h2 style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: clamp(36px, 5vw, 72px); line-height: 0.98; letter-spacing: -0.035em; max-width: 900px">Cuesta menos que una cuarta parte de una recepcionista.</h2>
 <p style="margin: 0; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #0052d4; font-weight: 600">Precio fundador · solo 3 cupos</p>
 </div>
-<div class="reveal" style="display: flex; flex-wrap: wrap; border: 2px solid #0a0a0a">
-<div class="price-card" style="flex: 1 1 320px; min-width: 0; padding: 40px; display: flex; flex-direction: column; gap: 20px; border-right: 2px solid #0a0a0a">
+<div class="reveal price-wrap">
+<div class="price-card" style="padding: 36px; display: flex; flex-direction: column; gap: 18px; border: 2px solid #0a0a0a">
 <span style="font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #5b6472">01 · Arreglo rápido</span>
 <div style="display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap">
 <span style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: clamp(40px, 4.4vw, 60px); line-height: 1; letter-spacing: -0.045em">$590.000</span>
@@ -233,8 +255,8 @@ details summary{font-size:18px !important}
 <li style="padding: 12px 0; border-top: 1px solid #d9dee7; color: #5b6472">Mantenimiento opcional: $150.000 al mes</li>
 </ul>
 </div>
-<div class="price-card" style="flex: 1 1 320px; min-width: 0; padding: 40px; display: flex; flex-direction: column; gap: 20px; background: #0a0a0a; color: #ffffff; border-right: 2px solid #0a0a0a">
-<span style="font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #8a93a3">02 · Agenda llena · recomendado</span>
+<div class="price-card" style="padding: 36px; display: flex; flex-direction: column; gap: 18px; background: #0a0a0a; color: #ffffff">
+<span style="font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #8a93a3">02 · Agenda llena <span class="badge" style="letter-spacing:.08em">Recomendado</span></span>
 <div style="display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap">
 <span style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: clamp(40px, 4.4vw, 60px); line-height: 1; letter-spacing: -0.045em">$1.900.000</span>
 <span style="font-size: 18px; color: #8a93a3; text-decoration: line-through">$2.900.000</span>
@@ -246,7 +268,7 @@ details summary{font-size:18px !important}
 <li style="padding: 12px 0; border-top: 1px solid #2a2f38">Recordatorios conectados a su agenda</li>
 </ul>
 </div>
-<div class="price-card" style="flex: 1 1 320px; min-width: 0; padding: 40px; display: flex; flex-direction: column; gap: 20px; background: #0052d4; color: #ffffff">
+<div class="price-card" style="padding: 36px; display: flex; flex-direction: column; gap: 18px; background: #0052d4; color: #ffffff">
 <span style="font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #dbe6fb">03 · Mensualidad</span>
 <div style="display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap">
 <span style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: clamp(40px, 4.4vw, 60px); line-height: 1; letter-spacing: -0.045em">$490.000</span>
@@ -404,7 +426,7 @@ renderer.setSize(w, h, false);
 camera.aspect = w / h; camera.updateProjectionMatrix();
 var narrow = w < 820;
 var ar = w / h, halfH = 11 * Math.tan(17.5 * Math.PI / 180), halfW = halfH * ar;
-if (narrow) { wheel.position.set(halfW * 0.6, halfH * 0.36, 0); wheel.scale.setScalar(Math.min(0.5, halfW * 0.36)); }
+if (narrow) { wheel.position.set(halfW * 0.55, halfH * 0.5, 0); wheel.scale.setScalar(Math.min(0.42, halfW * 0.3)); }
 else { wheel.position.set(Math.max(2.8, halfW * 0.7), -0.35, 0); wheel.scale.setScalar(Math.min(0.85, halfH * 0.24)); }
 };
 ctx.ro = new ResizeObserver(layout); ctx.ro.observe(canvas); layout();
