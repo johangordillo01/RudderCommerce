@@ -2,7 +2,9 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0a0a0a">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>Rudder Commerce — Que ningún paciente se pierda por WhatsApp</title>
 <meta name="description" content="Web, Google Maps y un asistente de WhatsApp que responde, agenda y recuerda cada cita. Para consultorios y clínicas odontológicas, estéticas y otros negocios de citas en Colombia.">
 <meta property="og:title" content="Rudder Commerce — Le llenamos la agenda a su consultorio">
@@ -13,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
 <style>
-body{margin:0;background:#0a0a0a}
+html{background:#0a0a0a}body{margin:0;background:#0a0a0a}
 a{color:#0052d4}a:hover{color:#003c9e}
 ::selection{background:#0052d4;color:#ffffff}
 .btn{transition:background .25s ease,color .25s ease,border-color .25s ease}
@@ -117,13 +119,20 @@ details summary{font-size:17px !important;padding:20px 0 !important}
 @media (max-width: 819px){
 #scene{display:none !important}
 .wheel-m{display:block;position:absolute;z-index:0;top:80px;right:-16vw;width:min(92vw,40svh);height:auto;pointer-events:none;will-change:transform;animation:spin 60s linear infinite}
-#inicio{min-height:100vh !important;min-height:100lvh !important}
-.hero-body{padding-bottom:calc(32px + 100lvh - 100svh) !important}
+#inicio{min-height:100vh !important;min-height:100lvh !important;min-height:max(100lvh, var(--hero-h, 0px)) !important}
+.hero-body{padding-bottom:calc(36px + env(safe-area-inset-bottom) + max(0px, 100lvh - 100svh)) !important}
+nav.wrap{padding-top:calc(24px + env(safe-area-inset-top)) !important}
 }
 @media (max-width: 819px) and (prefers-reduced-motion: reduce){.wheel-m{animation:none}}
 @media (prefers-reduced-motion: reduce){.reveal,.m1,.m2,.m3,.m4,.m5,.track,.live,.ln,.fade-in,.curtain-word{animation:none !important}.curtain{display:none}}
 @supports not (animation-timeline: view()){.reveal{animation:none}}
 </style>
+<script>
+(function(){var r=document.documentElement,m=0;
+function set(){var h=Math.max(window.innerHeight||0,r.clientHeight||0,(window.visualViewport&&window.visualViewport.height)||0);
+if(h>m+2){m=h;r.style.setProperty('--hero-h',m+'px');}}
+set();window.addEventListener('resize',set,{passive:true});if(window.visualViewport)visualViewport.addEventListener('resize',set,{passive:true});window.addEventListener('orientationchange',function(){m=0;setTimeout(set,300);});})();
+</script>
 </head>
 <body>
 <div style="font-family: Inter, -apple-system, 'Segoe UI', Roboto, sans-serif; color: #0a0a0a; background: #ffffff; -webkit-font-smoothing: antialiased">
